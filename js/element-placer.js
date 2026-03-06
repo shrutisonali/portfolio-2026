@@ -175,7 +175,7 @@ class ElementPlacer {
     // Animation sequences
     const useHoverFrames = !!(hoverFrames && hoverFrames.length > 1);
     const sequence = useHoverFrames
-      ? [0, 1] // gentle toggle between first two frames
+      ? Array.from({ length: hoverFrames.length }, (_, i) => i) // cycle through all frames
       : [1, 2, 1, 2]; // legacy wave: half-wave, full-wave
     let seqIdx = 0;
     let waveTimer = null;
@@ -193,7 +193,7 @@ class ElementPlacer {
     showFrame(0);
 
     if (hasHoverFrames) {
-      const frameDelay = useHoverFrames ? 250 : 280;
+      const frameDelay = useHoverFrames ? 120 : 280;
       el.addEventListener('mouseenter', () => {
         seqIdx = 0;
         showFrame(sequence[seqIdx]);

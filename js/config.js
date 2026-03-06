@@ -116,7 +116,7 @@ const CONFIG = {
     {
       id: 'sticker-outfit',
       type: 'draggable-sticker',
-      x: 2200,
+      x: 2500,
       y: 1650,
       width: 272,
       height: 272,
@@ -145,7 +145,18 @@ const CONFIG = {
       depth: 2, rotation: -3,
       data: {
         src: 'assets/naruto/1.png',
-        hoverSrc: 'assets/naruto/3.png',
+        hoverFrames: [
+          'assets/naruto/1.png',
+          'assets/naruto/2.png',
+          'assets/naruto/2.1.png',
+          'assets/naruto/2.3.png',
+          'assets/naruto/3.png',
+          'assets/naruto/3.5.png',
+          'assets/naruto/4.png',
+          'assets/naruto/5.png',
+          'assets/naruto/5.5.png',
+          'assets/naruto/5.6.png'
+        ],
         alt: 'Play Naruto Runner',
         speechBubble: "Let's run, dattebayo!",
         clickAction: 'openNarutoGame'
@@ -156,7 +167,7 @@ const CONFIG = {
     {
       id: 'stack-web',
       type: 'work-stack',
-      x: 1700,
+      x: 1900,
       y: 1540,
       width: 260,
       height: 340,
@@ -238,7 +249,7 @@ const CONFIG = {
       id: 'contact',
       type: 'info-card',
       x: 2800,
-      y: 2200,
+      y: 2050,
       width: 280,
       height: 280,
       depth: 3,

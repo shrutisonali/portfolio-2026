@@ -76,22 +76,22 @@
   transform-origin: center center;
 }
 
-/* ── Naruto sticker: no scale transforms, anchor to bottom ── */
-#sticker-naruto .image-sticker-frame {
-  object-position: bottom;
+/* ── Naruto sticker: fixed size frames, no jumping ── */
+#sticker-naruto {
+  position: relative;
 }
-#sticker-naruto .image-sticker-frame[data-frame="0"] {
+#sticker-naruto .image-sticker-frame {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
   transform: none;
 }
-#sticker-naruto .image-sticker-frame[data-frame="1"],
-#sticker-naruto .image-sticker-frame[data-frame="2"],
-#sticker-naruto .image-sticker-frame[data-frame="3"] {
+#sticker-naruto .image-sticker-frame:not([data-frame="0"]) {
   position: absolute;
-  bottom: 0;
-  top: auto;
+  top: 0;
   left: 0;
   visibility: hidden;
-  transform: none;
 }
 
 /* ── Speech Bubble ── */
