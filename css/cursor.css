@@ -1,0 +1,112 @@
+/* ============================================
+   CURSOR.CSS — Custom Cursor States
+   ============================================ */
+
+/* Hide default cursor on desktop */
+.has-custom-cursor,
+.has-custom-cursor * {
+  cursor: none !important;
+}
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-cursor);
+  pointer-events: none;
+  mix-blend-mode: difference;
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--color-white);
+  border-radius: 50%;
+  position: absolute;
+  top: -4px;
+  left: -4px;
+}
+
+.cursor-ring {
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  transition: width 0.3s var(--ease-out-expo),
+              height 0.3s var(--ease-out-expo),
+              top 0.3s var(--ease-out-expo),
+              left 0.3s var(--ease-out-expo),
+              border-color 0.3s ease;
+}
+
+.cursor-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-white);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+/* ── Cursor States ── */
+
+/* View state (over work cards) */
+.custom-cursor.cursor-view .cursor-ring {
+  width: 80px;
+  height: 80px;
+  top: -40px;
+  left: -40px;
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+.custom-cursor.cursor-view .cursor-label {
+  opacity: 1;
+}
+
+/* Play state (over game cards) */
+.custom-cursor.cursor-play .cursor-ring {
+  width: 80px;
+  height: 80px;
+  top: -40px;
+  left: -40px;
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+.custom-cursor.cursor-play .cursor-label {
+  opacity: 1;
+}
+
+/* Drag state (over draggable stickers) */
+.custom-cursor.cursor-drag .cursor-ring {
+  width: 80px;
+  height: 80px;
+  top: -40px;
+  left: -40px;
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+.custom-cursor.cursor-drag .cursor-label {
+  opacity: 1;
+}
+
+/* Hidden on touch */
+@media (hover: none) and (pointer: coarse) {
+  .custom-cursor {
+    display: none !important;
+  }
+
+  .has-custom-cursor,
+  .has-custom-cursor * {
+    cursor: auto !important;
+  }
+}

@@ -1,0 +1,70 @@
+/* ============================================
+   MINIMAP.CSS — Minimap Overlay
+   ============================================ */
+
+.minimap {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 180px;
+  height: 144px;
+  z-index: var(--z-minimap);
+  background: var(--color-white);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.minimap:hover {
+  opacity: 1;
+}
+
+.minimap-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+/* Viewport indicator */
+.minimap-viewport {
+  position: absolute;
+  border: 1.5px solid var(--color-accent);
+  border-radius: 2px;
+  background: rgba(196, 85, 58, 0.08);
+  pointer-events: none;
+}
+
+/* Dots representing elements */
+.minimap-dot {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color-ink-muted);
+}
+
+.minimap-dot.dot-hero {
+  width: 8px;
+  height: 8px;
+  background: var(--color-accent);
+}
+
+.minimap-dot.dot-work {
+  background: var(--color-ink-soft);
+  width: 6px;
+  height: 6px;
+}
+
+.minimap-dot.dot-game {
+  background: var(--color-gold);
+  width: 5px;
+  height: 5px;
+}
+
+/* Hide on mobile */
+@media (max-width: 768px) {
+  .minimap {
+    display: none;
+  }
+}

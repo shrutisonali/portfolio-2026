@@ -1,0 +1,135 @@
+/* ============================================
+   VARIABLES.CSS — Design Tokens
+   The Playground — Shruti's Portfolio
+   ============================================ */
+
+/* === Self-hosted Fonts === */
+@font-face {
+  font-family: 'Clash Display';
+  src: url('../fonts/ClashDisplay/ClashDisplay_Complete/Fonts/WEB/fonts/ClashDisplay-Variable.woff2') format('woff2'),
+       url('../fonts/ClashDisplay/ClashDisplay_Complete/Fonts/WEB/fonts/ClashDisplay-Variable.woff') format('woff');
+  font-weight: 200 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('../fonts/Satoshi/Satoshi_Complete/Fonts/WEB/fonts/Satoshi-Variable.woff2') format('woff2'),
+       url('../fonts/Satoshi/Satoshi_Complete/Fonts/WEB/fonts/Satoshi-Variable.woff') format('woff');
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('../fonts/Satoshi/Satoshi_Complete/Fonts/WEB/fonts/Satoshi-VariableItalic.woff2') format('woff2'),
+       url('../fonts/Satoshi/Satoshi_Complete/Fonts/WEB/fonts/Satoshi-VariableItalic.woff') format('woff');
+  font-weight: 300 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  /* === Color Palette === */
+  /* Clean white canvas — like Umi reference */
+  --color-canvas:       #FAFAFA;    /* near-white canvas */
+  --color-canvas-dark:  #F0EDE8;    /* warm off-white for card bgs */
+  --color-ink:          #1A1A1A;    /* near-black for text */
+  --color-ink-soft:     #4A4540;    /* softer ink for secondary text */
+  --color-ink-muted:    #8A8278;    /* muted for captions */
+
+  /* Accent palette — vibrant, playful, bold */
+  --color-accent:       #F37B75;    /* coral — dominant accent */
+  --color-accent-hover: #E0635D;    /* deeper coral on hover */
+  --color-gold:         #F8C614;    /* bright yellow — secondary accent */
+  --color-gold-soft:    #EA89B9;    /* pink for highlights */
+  --color-highlight:    #F8C614;    /* yellow highlight for hero text */
+  --color-highlight-soft: #FADA6A;  /* softer yellow */
+  --color-sage:         #A0D4A6;    /* mint green */
+  --color-blue:         #6CC2EA;    /* sky blue */
+  --color-pink:         #EA89B9;    /* pink accent */
+  --color-dark:         #2A2A2A;    /* dark card backgrounds */
+  --color-cream:        #FFF8EE;    /* card backgrounds */
+  --color-warm-bg:      #F5F0E8;    /* warm card bg variant */
+  --color-white:        #FFFFFF;
+
+  /* Overlay & UI */
+  --color-overlay:      rgba(26, 26, 26, 0.85);
+  --color-glass:        rgba(250, 250, 250, 0.85);
+
+  /* === Typography === */
+  --font-display:   'Clash Display', 'Georgia', serif;
+  --font-body:      'Satoshi', 'Helvetica Neue', sans-serif;
+  --font-hand:      'Caveat', cursive;
+
+  /* Type scale (fluid) */
+  --text-xs:    clamp(0.7rem, 0.65rem + 0.25vw, 0.8rem);
+  --text-sm:    clamp(0.8rem, 0.75rem + 0.3vw, 0.9rem);
+  --text-base:  clamp(0.9rem, 0.85rem + 0.3vw, 1rem);
+  --text-md:    clamp(1rem, 0.9rem + 0.4vw, 1.15rem);
+  --text-lg:    clamp(1.2rem, 1rem + 0.6vw, 1.5rem);
+  --text-xl:    clamp(1.5rem, 1.2rem + 1vw, 2rem);
+  --text-2xl:   clamp(2rem, 1.5rem + 1.5vw, 3rem);
+  --text-3xl:   clamp(2.5rem, 2rem + 2vw, 4rem);
+  --text-hero:  clamp(3.5rem, 2.5rem + 3vw, 6rem);
+
+  /* Line heights */
+  --leading-tight:  1.1;
+  --leading-snug:   1.25;
+  --leading-normal: 1.5;
+  --leading-loose:  1.75;
+
+  /* Letter spacing */
+  --tracking-tight:  -0.02em;
+  --tracking-normal:  0;
+  --tracking-wide:    0.05em;
+  --tracking-wider:   0.1em;
+
+  /* === Spacing === */
+  --space-xs:   0.25rem;
+  --space-sm:   0.5rem;
+  --space-md:   1rem;
+  --space-lg:   1.5rem;
+  --space-xl:   2rem;
+  --space-2xl:  3rem;
+  --space-3xl:  4rem;
+  --space-4xl:  6rem;
+
+  /* === Borders & Radii === */
+  --radius-sm:  6px;
+  --radius-md:  12px;
+  --radius-lg:  20px;
+  --radius-xl:  28px;
+  --radius-full: 50%;
+
+  /* === Shadows (disabled — FigJam/scrapbook flat style) === */
+  --shadow-sm:    none;
+  --shadow-md:    none;
+  --shadow-lg:    none;
+  --shadow-xl:    none;
+  --shadow-hover: none;
+
+  /* === Transitions === */
+  --ease-out-expo:  cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out:    cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast:   0.2s;
+  --duration-normal: 0.4s;
+  --duration-slow:   0.8s;
+
+  /* === Z-Index Scale === */
+  --z-canvas:    1;
+  --z-elements:  10;
+  --z-stickers:  5;
+  --z-nav:       50;
+  --z-cursor:    90;
+  --z-minimap:   60;
+  --z-overlay:   100;
+  --z-loader:    200;
+
+  /* === Canvas === */
+  --canvas-width:  5000;
+  --canvas-height: 4000;
+}

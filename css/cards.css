@@ -1,0 +1,707 @@
+/* ============================================
+   CARDS.CSS — Umi-Style Dense Canvas Cards
+   Hero, work cards, mini cards, game cards,
+   info cards, photo cards, illustrations
+   ============================================ */
+
+/* ═══════════════════════════════════════════
+   HERO — Large centered headline
+   ═══════════════════════════════════════════ */
+.hero-element {
+  text-align: center;
+  pointer-events: none;
+  z-index: calc(var(--z-elements) + 5);
+}
+
+.hero-headline {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 2rem + 2.5vw, 4.5rem);
+  font-weight: 400;
+  white-space: nowrap;
+  line-height: 1.15;
+  color: var(--color-ink);
+  letter-spacing: -0.02em;
+  max-width: 620px;
+}
+
+.hero-name {
+  font-style: italic;
+}
+
+.hero-highlight {
+  position: relative;
+  display: inline-block;
+  font-style: italic;
+  padding: 0 0.05em;
+}
+
+.hero-highlight__stroke {
+  position: absolute;
+  left: -4%;
+  top: 50%;
+  transform: translateY(-40%);
+  width: 110%;
+  height: 80%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: visible;
+}
+
+.highlight-path {
+  clip-path: inset(0 100% 0 0);
+}
+
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-ink-muted);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  margin-top: var(--space-lg);
+}
+
+
+/* ═══════════════════════════════════════════
+   CARD BASE
+   ═══════════════════════════════════════════ */
+.card {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  overflow: visible;
+  cursor: pointer;
+  transition: border-color 0.3s ease, transform 0.4s var(--ease-out-expo);
+}
+
+/* Tape strip on cards */
+.card::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  width: 40px;
+  height: 14px;
+  background: rgba(248, 198, 20, 0.35);
+  border-radius: 2px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.card:hover {
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+.card-content {
+  padding: var(--space-sm) var(--space-md) var(--space-md);
+}
+
+.card-title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 400;
+  color: var(--color-ink);
+  margin-bottom: 2px;
+  line-height: var(--leading-snug);
+}
+
+.card-subtitle {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-ink-muted);
+  letter-spacing: var(--tracking-wide);
+}
+
+
+/* ═══════════════════════════════════════════
+   WORK CARD — default, dark, photo variants
+   ═══════════════════════════════════════════ */
+/* Sticky note tints for work cards — from palette */
+.work-card {
+  display: flex;
+  flex-direction: column;
+  background: #FEF3E2;  /* warm yellow tint */
+}
+
+.work-card:nth-child(even) {
+  background: #E8F6FB;  /* sky blue tint */
+}
+
+.work-card:nth-child(3n) {
+  background: #FDE8E7;  /* coral tint */
+}
+
+.card-thumbnail {
+  width: 100%;
+  height: 180px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-category {
+  position: absolute;
+  top: var(--space-sm);
+  left: var(--space-sm);
+  padding: 3px 8px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(4px);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+
+.card-year {
+  padding: 0 var(--space-md) var(--space-sm);
+  font-family: var(--font-hand);
+  font-size: var(--text-xs);
+  color: var(--color-ink-muted);
+}
+
+/* Dark variant — dark bottom section */
+.work-card--dark .card-content--dark {
+  background: var(--color-dark);
+  padding: var(--space-sm) var(--space-md) var(--space-md);
+}
+
+.work-card--dark .card-content--dark .card-title {
+  color: var(--color-white);
+}
+
+.work-card--dark .card-content--dark .card-subtitle {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+
+/* ═══════════════════════════════════════════
+   MINI CARD — small floating UI snippets
+   Like Umi's goal cards, reminders, chat bubbles
+   ═══════════════════════════════════════════ */
+.mini-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 10px 16px;
+  border-radius: var(--radius-lg);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.mini-card--default {
+  background: var(--color-white);
+  color: var(--color-ink);
+}
+
+.mini-card--warm {
+  background: var(--color-warm-bg);
+  color: var(--color-ink-soft);
+}
+
+.mini-card--dark {
+  background: var(--color-dark);
+  color: var(--color-white);
+  border-radius: 50px;
+}
+
+.mini-card--highlight {
+  background: var(--color-highlight);
+  color: var(--color-ink);
+  font-weight: 500;
+}
+
+.mini-card-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-right: 4px;
+}
+
+.mini-card-text {
+  font-size: 12px;
+}
+
+.mini-card--dark .mini-card-text {
+  font-size: 11px;
+}
+
+.mini-card-icon {
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+}
+
+.mini-card--dark .mini-card-icon {
+  width: 18px;
+  height: 18px;
+  background: var(--color-sage);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: white;
+}
+
+.mini-card--highlight .mini-card-icon {
+  font-size: 14px;
+}
+
+
+/* ═══════════════════════════════════════════
+   GAME CARD — playful dashed border
+   ═══════════════════════════════════════════ */
+.game-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 2px dashed var(--color-ink-muted);
+  border-radius: var(--radius-lg);
+  background: var(--color-white);
+  padding: var(--space-lg) var(--space-md);
+  position: relative;
+}
+
+.game-card:hover {
+  border-color: var(--color-accent);
+  border-style: solid;
+}
+
+.game-card-icon {
+  width: 50px;
+  height: 50px;
+  margin-bottom: var(--space-sm);
+  color: var(--color-ink-soft);
+}
+
+.game-card-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.game-card .card-content {
+  padding: 0;
+}
+
+.game-card .card-title {
+  font-size: var(--text-base);
+}
+
+.game-card-badge {
+  margin-top: var(--space-sm);
+  padding: 3px 12px;
+  background: var(--color-accent);
+  color: var(--color-white);
+  border-radius: var(--radius-xl);
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+}
+
+
+/* ═══════════════════════════════════════════
+   INFO CARD — Square widget cards
+   ═══════════════════════════════════════════ */
+.info-card {
+  aspect-ratio: 1 / 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 32px;
+  border: none;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.4s var(--ease-out-expo);
+}
+
+.info-card:hover {
+  transform: scale(1.03);
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.info-card::before {
+  display: none;
+}
+
+/* ── Header row: avatar/icon + text ── */
+.info-card__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  flex-shrink: 0;
+}
+
+.info-card__avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.info-card__icon-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.info-card__title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 400;
+  line-height: 1.15;
+  margin-bottom: 8px;
+  flex-shrink: 0;
+}
+
+/* ── Cover image area ── */
+.info-card__visual {
+  flex: 1;
+  border-radius: 16px;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.info-card__cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Text content ── */
+.info-card__desc {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  line-height: var(--leading-normal);
+}
+
+.info-card__email {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  margin-top: var(--space-xs);
+}
+
+/* ── Footer CTA ── */
+.info-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  margin-top: auto;
+  padding-top: 8px;
+  flex-shrink: 0;
+  transition: gap 0.3s ease;
+}
+
+.info-card:hover .info-card__cta {
+  gap: 8px;
+}
+
+.info-card__arrow {
+  display: inline-block;
+  transition: transform 0.3s var(--ease-out-expo);
+}
+
+.info-card:hover .info-card__arrow {
+  transform: translateX(3px);
+}
+
+/* ── About variant — lavender bg, photo card ── */
+.info-card--about {
+  background: #79e5ad;
+  color: var(--color-ink);
+}
+
+.info-card--about .info-card__subtitle {
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+.info-card--about .info-card__cta {
+  color: var(--color-ink-muted);
+}
+
+/* ── Contact variant — sage green, warm & inviting ── */
+.info-card--contact {
+  background: var(--color-pink);
+  color: var(--color-white);
+}
+
+.info-card--contact .info-card__title {
+  font-size: var(--text-xl);
+  font-weight: 500;
+  color: var(--color-white);
+}
+
+.info-card--contact .info-card__desc {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: var(--text-xs);
+}
+
+.info-card--contact .info-card__spacer {
+  flex: 1;
+}
+
+.info-card--contact .info-card__email {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-white);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(255, 255, 255, 0.4);
+}
+
+.info-card--contact .info-card__cta {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ── Default fallback (legacy) ── */
+.info-card .card-title {
+  font-size: var(--text-xl);
+}
+
+.info-card-text {
+  font-size: var(--text-xs);
+  color: var(--color-ink-soft);
+  line-height: var(--leading-normal);
+}
+
+.info-card-email {
+  font-family: var(--font-hand);
+  font-size: var(--text-base);
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.info-card-cta {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-accent);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+
+/* ═══════════════════════════════════════════
+   PHOTO CARD — rounded image placeholder
+   ═══════════════════════════════════════════ */
+.photo-card {
+  pointer-events: none;
+}
+
+.photo-card-image {
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+
+/* ═══════════════════════════════════════════
+   ILLUSTRATION — hand-drawn SVG elements
+   ═══════════════════════════════════════════ */
+.illustration {
+  pointer-events: none;
+}
+
+.illustration svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* ═══════════════════════════════════════════
+   WORK STACK — Moodboard-style fanned cards
+   ═══════════════════════════════════════════ */
+.work-stack {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.work-stack__deck {
+  position: relative;
+  width: 200px;
+  height: 250px;
+}
+
+.work-stack__card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #FFFFFF;
+  border-radius: 16px;
+  z-index: var(--stack-index);
+  transform: translate(var(--stack-offset-x), var(--stack-offset-y)) rotate(var(--stack-rotation));
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.work-stack:hover .work-stack__card {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.14);
+}
+
+/* Thumbnail area */
+.work-stack__card-thumb {
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.work-stack__card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Color-only placeholder when no thumbnail */
+.work-stack__card-thumb--placeholder {
+  background: rgba(255, 255, 255, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Color dots row */
+.work-stack__card-dots {
+  display: flex;
+  gap: 5px;
+  padding: 8px 2px 4px;
+}
+
+.work-stack__card-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Card text area */
+.work-stack__card-info {
+  padding: 0 2px 2px;
+}
+
+.work-stack__card-title {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-ink);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.work-stack__card-title em {
+  font-style: italic;
+}
+
+.work-stack__card-desc {
+  font-family: var(--font-body);
+  font-size: 9px;
+  color: var(--color-ink-muted);
+  opacity: 1;
+  line-height: 1.4;
+  margin-top: 2px;
+}
+
+/* Stack label below deck */
+.work-stack__label {
+  text-align: center;
+  padding-top: var(--space-xs);
+}
+
+.work-stack__name {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--color-ink);
+  margin-bottom: var(--space-xs);
+  transition: color 0.3s ease;
+}
+
+.work-stack:hover .work-stack__name {
+  color: var(--color-accent);
+}
+
+.work-stack__tags {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-xs);
+  flex-wrap: wrap;
+}
+
+.work-stack__tags span {
+  padding: 2px 10px;
+  background: var(--color-canvas-dark);
+  border-radius: var(--radius-xl);
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+
+
+/* ═══════════════════════════════════════════
+   ENTRANCE STATE
+   ═══════════════════════════════════════════ */
+.canvas-element {
+  opacity: 0;
+}
+
+.canvas-element.revealed {
+  opacity: 1;
+}

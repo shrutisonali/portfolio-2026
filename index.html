@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="Shruti Sonali — Design Engineer. Brand identity, packaging systems, and web experiences built at the intersection of design instinct and AI-assisted development.">
+  <meta name="theme-color" content="#F5F0E8">
+
+  <title>Shruti Sonali — Multidisciplinary Designer</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/Favicon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preload" href="fonts/ClashDisplay/ClashDisplay_Complete/Fonts/WEB/fonts/ClashDisplay-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/Satoshi/Satoshi_Complete/Fonts/WEB/fonts/Satoshi-Variable.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/canvas.css">
+  <link rel="stylesheet" href="css/cards.css">
+  <link rel="stylesheet" href="css/stickers.css">
+  <link rel="stylesheet" href="css/loader.css">
+  <link rel="stylesheet" href="css/cursor.css">
+  <link rel="stylesheet" href="css/minimap.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <!-- GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+</head>
+<body>
+
+  <!-- Skip to content -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <!-- ── LOADER ── -->
+  <div class="loader" role="status" aria-label="Loading portfolio">
+    <div class="loader-sticker-trail" aria-hidden="true"></div>
+    <div class="loader-counter-wrap" aria-hidden="true">
+      <span class="loader-counter">0</span>
+    </div>
+  </div>
+
+  <!-- ── FLOATING CANVAS LOGO ── -->
+  <div class="canvas-name" style="opacity: 0;" aria-hidden="true">
+    <img src="SVG/Logo.svg" alt="Shruti Sonali" draggable="false">
+  </div>
+
+  <!-- ── PROFILE AVATAR (top-right) ── -->
+  <button class="profile-avatar" aria-label="Open resume" id="profileAvatar">
+    <img src="assets/Profile Picture2.png" alt="Shruti Sonali" draggable="false">
+  </button>
+
+  <!-- ── RESUME SIDE PANEL (Notion-style) ── -->
+  <div class="resume-panel" id="resumePanel" aria-hidden="true">
+    <div class="resume-panel__backdrop" id="resumeBackdrop"></div>
+    <div class="resume-panel__sheet">
+      <div class="resume-panel__header">
+        <div class="resume-panel__profile">
+          <img src="assets/Profile Picture2.png" alt="Shruti Sonali" class="resume-panel__photo">
+          <div>
+            <h2 class="resume-panel__name">Shruti Sonali</h2>
+            <p class="resume-panel__title">Non-Linear Creative</p>
+          </div>
+        </div>
+        <button class="resume-panel__close" id="resumeClose" aria-label="Close resume">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M18 6L6 18M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="resume-panel__body">
+        <section class="resume-section">
+          <h3 class="resume-section__heading">About</h3>
+          <p class="resume-section__text">I'm a non-linear creative — trained as an architect, shaped by five years of brand and identity work, now designing and building with AI. I don't fit neatly into one box, and that's the point. Brand to web, designed and built with AI.</p>
+        </section>
+
+        <section class="resume-section">
+          <h3 class="resume-section__heading">Experience</h3>
+          <div class="resume-entry">
+            <div class="resume-entry__header">
+              <span class="resume-entry__role">Brand & Web Designer | No-Code Developer</span>
+              <span class="resume-entry__date">Jan 2023 — Present</span>
+            </div>
+            <span class="resume-entry__company">Independent</span>
+            <p class="resume-entry__desc">Brand strategy, identity systems, multi-SKU packaging, and no-code web development. Built 5+ websites and 2 micro-tools for clients including Miitra, Kindred Web Studio, and Closed Loop Center.</p>
+          </div>
+          <div class="resume-entry">
+            <div class="resume-entry__header">
+              <span class="resume-entry__role">Brand & Web Designer (Contract)</span>
+              <span class="resume-entry__date">Feb 2025 — Jul 2025</span>
+            </div>
+            <span class="resume-entry__company">Sylva Inc</span>
+            <p class="resume-entry__desc">Brand systems and web design for Sylva's professional sub-communities — PreSales Collective, Operators, and their conference properties. End-to-end: brand strategy, visual identity, web development.</p>
+          </div>
+          <div class="resume-entry">
+            <div class="resume-entry__header">
+              <span class="resume-entry__role">Graphic Designer</span>
+              <span class="resume-entry__date">Oct 2022 — Jan 2023</span>
+            </div>
+            <span class="resume-entry__company">Nas Daily, Dubai (Remote)</span>
+            <p class="resume-entry__desc">Visual design for one of the world's largest digital media brands. Thumbnails, pitch decks, and campaign assets at high velocity.</p>
+          </div>
+          <div class="resume-entry">
+            <div class="resume-entry__header">
+              <span class="resume-entry__role">Brand Designer</span>
+              <span class="resume-entry__date">Jan 2022 — Sep 2022</span>
+            </div>
+            <span class="resume-entry__company">Loud Mob Media, Pune</span>
+            <p class="resume-entry__desc">Brand identity and packaging design. Visual systems for agency clients across entertainment and tech.</p>
+          </div>
+          <div class="resume-entry">
+            <div class="resume-entry__header">
+              <span class="resume-entry__role">Graphic Designer</span>
+              <span class="resume-entry__date">Aug 2021 — Jan 2022</span>
+            </div>
+            <span class="resume-entry__company">Corporate Culture, Pune</span>
+            <p class="resume-entry__desc">Event design, 3D stage concepts, and marketing collateral for corporate clients.</p>
+          </div>
+          <div class="resume-entry">
+            <div class="resume-entry__header">
+              <span class="resume-entry__role">Graphic Design Intern</span>
+              <span class="resume-entry__date">Nov 2020 — May 2021</span>
+            </div>
+            <span class="resume-entry__company">Dream11, Mumbai (Remote)</span>
+            <p class="resume-entry__desc">Visual design for India's largest fantasy sports platform. Social content and brand templates at scale.</p>
+          </div>
+        </section>
+
+        <section class="resume-section">
+          <h3 class="resume-section__heading">Skills</h3>
+          <div class="resume-tags">
+            <span class="resume-tag">Brand Identity Systems</span>
+            <span class="resume-tag">Packaging Design</span>
+            <span class="resume-tag">Web Design & Dev</span>
+            <span class="resume-tag">UI Design</span>
+            <span class="resume-tag">Design Systems</span>
+            <span class="resume-tag">Typography</span>
+            <span class="resume-tag">Figma</span>
+            <span class="resume-tag">Webflow</span>
+            <span class="resume-tag">HTML / CSS / JS</span>
+            <span class="resume-tag">GSAP & Motion</span>
+            <span class="resume-tag">Claude Code</span>
+            <span class="resume-tag">AI-Assisted Development</span>
+            <span class="resume-tag">Adobe Suite</span>
+            <span class="resume-tag">Illustration</span>
+            <span class="resume-tag">3D Design</span>
+          </div>
+        </section>
+
+        <section class="resume-section">
+          <h3 class="resume-section__heading">Education</h3>
+          <div class="resume-entry">
+            <div class="resume-entry__header">
+              <span class="resume-entry__role">Bachelor of Architecture</span>
+              <span class="resume-entry__date">2016 — 2021</span>
+            </div>
+            <span class="resume-entry__company">Lovely School of Architecture & Design, LPU</span>
+          </div>
+        </section>
+
+        <section class="resume-section">
+          <h3 class="resume-section__heading">Contact</h3>
+          <div class="resume-contact">
+            <a href="mailto:shrutisonali38@gmail.com" class="resume-contact__link">shrutisonali38@gmail.com</a>
+            <a href="https://www.behance.net/shrutisonali_studio" target="_blank" rel="noopener" class="resume-contact__link">Behance</a>
+            <a href="https://www.linkedin.com/in/shruti-sonali/" target="_blank" rel="noopener" class="resume-contact__link">LinkedIn</a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CHAI RECIPE SIDE PANEL (notebook style) ── -->
+  <div class="resume-panel chai-panel" id="chaiPanel" aria-hidden="true">
+    <div class="resume-panel__backdrop" id="chaiBackdrop"></div>
+    <div class="resume-panel__sheet chai-panel__sheet">
+
+      <!-- Close button floating -->
+      <button class="chai-close" id="chaiClose" aria-label="Close recipe">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+
+      <!-- Notebook page content -->
+      <div class="chai-notebook" id="chaiNotebook">
+
+        <!-- Notebook ring holes decoration -->
+        <div class="chai-rings" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+
+        <!-- Title area -->
+        <div class="chai-title-area">
+          <p class="chai-eyebrow">a recipe from my kitchen</p>
+          <h2 class="chai-title">Ginger Chai</h2>
+          <p class="chai-subtitle-note">the kind that fills the whole house<br>with warmth before the first sip</p>
+        </div>
+
+        <!-- Margin note -->
+        <div class="chai-margin-note chai-margin-note--top" aria-hidden="true">
+          no teabags.<br>no shortcuts.
+        </div>
+
+        <!-- Intro scribble -->
+        <div class="chai-intro-note">
+          <p>This is my mom's recipe, passed down through years of mornings. Every Indian kitchen makes chai differently &mdash; this is how ours does. Patience, spice, and a heavy hand with the ginger.</p>
+        </div>
+
+        <!-- Ingredients -->
+        <div class="chai-ingredients-section">
+          <h3 class="chai-list-heading">What you'll need:</h3>
+          <ul class="chai-ingredients-list">
+            <li><span class="chai-qty">1 cup</span> water</li>
+            <li><span class="chai-qty">1 cup</span> whole milk</li>
+            <li><span class="chai-qty">2 tsp</span> Assam tea <span class="chai-aside">(loose leaf, CTC grade)</span></li>
+            <li><span class="chai-qty">1 inch</span> fresh ginger, crushed</li>
+            <li><span class="chai-qty">3</span> green cardamom pods, cracked</li>
+            <li><span class="chai-qty">1 small</span> cinnamon stick</li>
+            <li><span class="chai-qty">2&ndash;3</span> cloves</li>
+            <li><span class="chai-qty">2 tsp</span> sugar <span class="chai-aside">(or to taste)</span></li>
+          </ul>
+          <p class="chai-scribble">^ the dust-grade stuff from the Indian store, not the fancy whole leaf!</p>
+        </div>
+
+        <!-- Divider doodle -->
+        <div class="chai-divider" aria-hidden="true">
+          <svg viewBox="0 0 200 12" fill="none"><path d="M4 6 Q20 2 40 6 Q60 10 80 6 Q100 2 120 6 Q140 10 160 6 Q180 2 196 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+        </div>
+
+        <!-- Steps -->
+        <h3 class="chai-list-heading">How to make it:</h3>
+
+        <div class="chai-step">
+          <div class="chai-step__illustration">
+            <img src="assets/Chai Illustrations/Chai recipe illustrations/chai 1.png" alt="Crushing spices" loading="lazy" draggable="false">
+          </div>
+          <div class="chai-step__content">
+            <span class="chai-step__num">1.</span>
+            <h4 class="chai-step__heading">Crush the spices</h4>
+            <p class="chai-step__body">Lightly crush the cardamom pods and ginger with the back of a spoon or mortar &amp; pestle. You want them cracked open, not pulverised &mdash; just enough to release the oils.</p>
+            <p class="chai-step__scribble">"if you can't smell it from across the kitchen, you haven't crushed it enough" &mdash; mom</p>
+          </div>
+        </div>
+
+        <div class="chai-step chai-step--flip">
+          <div class="chai-step__illustration">
+            <img src="assets/Chai Illustrations/Chai recipe illustrations/chai 2.png" alt="Simmering spices" loading="lazy" draggable="false">
+          </div>
+          <div class="chai-step__content">
+            <span class="chai-step__num">2.</span>
+            <h4 class="chai-step__heading">Boil with spices &amp; tea</h4>
+            <p class="chai-step__body">Bring the water to a boil. Add the crushed ginger, cardamom, cinnamon stick, cloves, and the loose Assam tea leaves. Let it simmer on low for 3&ndash;4 minutes until dark, fragrant, and strong.</p>
+            <p class="chai-step__scribble">the tea goes in NOW, not with the milk. it needs to steep and get that deep colour.</p>
+          </div>
+        </div>
+
+        <div class="chai-step">
+          <div class="chai-step__illustration">
+            <img src="assets/Chai Illustrations/Chai recipe illustrations/chai 3.png" alt="Adding milk" loading="lazy" draggable="false">
+          </div>
+          <div class="chai-step__content">
+            <span class="chai-step__num">3.</span>
+            <h4 class="chai-step__heading">Add the milk</h4>
+            <p class="chai-step__body">Once the tea has steeped and the water is dark and strong, pour in the milk. Bring it back to a gentle boil. Watch it carefully &mdash; chai loves to boil over when you look away.</p>
+            <p class="chai-step__scribble">seriously, don't look away</p>
+          </div>
+        </div>
+
+        <div class="chai-step chai-step--flip">
+          <div class="chai-step__illustration">
+            <img src="assets/Chai Illustrations/Chai recipe illustrations/chai 4.png" alt="Simmering to colour" loading="lazy" draggable="false">
+          </div>
+          <div class="chai-step__content">
+            <span class="chai-step__num">4.</span>
+            <h4 class="chai-step__heading">Let it find its colour</h4>
+            <p class="chai-step__body">Reduce to low heat and simmer for 2&ndash;3 minutes. Add the sugar now. The chai should turn a deep, warm terracotta &mdash; not too pale, not too dark.</p>
+            <p class="chai-step__scribble">you'll know it's ready when it looks like it could warm you up just by looking at it</p>
+          </div>
+        </div>
+
+        <div class="chai-step">
+          <div class="chai-step__illustration">
+            <img src="assets/Chai Illustrations/Chai recipe illustrations/chai 5.png" alt="Straining into cup" loading="lazy" draggable="false">
+          </div>
+          <div class="chai-step__content">
+            <span class="chai-step__num">5.</span>
+            <h4 class="chai-step__heading">Strain &amp; serve</h4>
+            <p class="chai-step__body">Pour through a fine strainer into your favourite cup. The first sip should hit you with ginger, then cardamom, then warmth all the way down.</p>
+            <p class="chai-step__scribble">best enjoyed with biscuits, gossip, or a good deadline.</p>
+          </div>
+        </div>
+
+        <!-- Closing -->
+        <div class="chai-closing-note">
+          <p>Chai is not a beverage. It's a ritual, a pause, a conversation starter.</p>
+          <p class="chai-sign">&mdash; Shruti</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SOCIAL DOCK (macOS style) ── -->
+  <div class="social-dock" style="opacity: 0;" aria-label="Social links">
+    <a href="https://www.behance.net/shrutisonali_studio" target="_blank" rel="noopener" class="dock-link" aria-label="Behance">
+      <img src="assets/dock/behance.png" alt="Behance" draggable="false">
+    </a>
+    <a href="https://www.linkedin.com/in/shruti-sonali/" target="_blank" rel="noopener" class="dock-link" aria-label="LinkedIn">
+      <img src="assets/dock/linkedin.png" alt="LinkedIn" draggable="false">
+    </a>
+    <a href="mailto:shrutisonali38@gmail.com" class="dock-link" aria-label="Email">
+      <img src="assets/dock/gmail.png" alt="Gmail" draggable="false">
+    </a>
+  </div>
+
+  <!-- ── TOOLS TOOLBAR (left-center, design-tool style) ── -->
+  <div class="tools-toolbar" style="opacity: 0;" aria-label="Design tools I use">
+    <div class="tool-item" data-tooltip="Figma">
+      <img src="assets/tools/figma.png" alt="Figma" draggable="false">
+    </div>
+    <div class="tool-item" data-tooltip="Webflow">
+      <img src="assets/tools/webflow.png" alt="Webflow" draggable="false">
+    </div>
+    <div class="tool-divider" aria-hidden="true"></div>
+    <div class="tool-item" data-tooltip="Photoshop">
+      <img src="assets/tools/photoshop.png" alt="Adobe Photoshop" draggable="false">
+    </div>
+    <div class="tool-item" data-tooltip="Illustrator">
+      <img src="assets/tools/illustrator.png" alt="Adobe Illustrator" draggable="false">
+    </div>
+    <div class="tool-divider" aria-hidden="true"></div>
+    <div class="tool-item" data-tooltip="Claude Code">
+      <img src="assets/tools/claude.svg" alt="Claude Code" draggable="false">
+    </div>
+  </div>
+
+  <!-- ── MADE WITH CLAUDE CODE BADGE ── -->
+  <div class="claude-badge" style="opacity: 0;" aria-label="Made with Claude Code">
+    <img src="assets/made with claude code_1.svg" alt="Made with Claude Code" draggable="false">
+  </div>
+
+  <!-- ── MAIN CANVAS ── -->
+  <main id="main-content" class="viewport" role="application" aria-label="Interactive portfolio canvas — drag to explore">
+    <div class="world" aria-label="Portfolio elements">
+      <!-- Elements are placed dynamically by element-placer.js -->
+    </div>
+  </main>
+
+  <!-- ── DRAG HINT ── -->
+  <div class="drag-hint" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <path d="M5 12h14M12 5l7 7-7 7"/>
+    </svg>
+    <span>Drag to explore</span>
+  </div>
+
+  <!-- ── CUSTOM CURSOR ── -->
+  <div class="custom-cursor" aria-hidden="true">
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring">
+      <span class="cursor-label"></span>
+    </div>
+  </div>
+
+  <!-- minimap removed -->
+
+  <!-- ── BACK BUTTON (for page overlays) ── -->
+  <button class="page-back" aria-label="Back to playground">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <path d="M19 12H5M12 19l-7-7 7-7"/>
+    </svg>
+    <span>Back to Playground</span>
+  </button>
+
+  <!-- ── SCRIPTS ── -->
+  <script src="js/utils.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/canvas-engine.js"></script>
+  <script src="js/element-placer.js"></script>
+  <script src="js/parallax.js"></script>
+  <script src="js/loader.js"></script>
+  <script src="js/cursor.js"></script>
+  <script src="js/magnetic.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/card-transitions.js"></script>
+  <script src="js/minimap.js"></script>
+  <script src="js/connect-dots.js"></script>
+  <script src="js/coloring-book.js"></script>
+  <script src="js/naruto-runner.js"></script>
+  <script src="js/resume-panel.js"></script>
+  <script src="js/chai-panel.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

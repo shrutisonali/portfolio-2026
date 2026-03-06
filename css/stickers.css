@@ -1,0 +1,562 @@
+/* ============================================
+   STICKERS.CSS — Decorative SVG Elements
+   ============================================ */
+
+.sticker {
+  pointer-events: none;
+  z-index: var(--z-stickers);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.sticker.revealed {
+  opacity: 1;
+}
+
+.sticker svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Idle floating animation for stickers */
+@keyframes stickerFloat {
+  0%, 100% { transform: translateY(0) rotate(var(--sticker-rot, 0deg)); }
+  50% { transform: translateY(-4px) rotate(calc(var(--sticker-rot, 0deg) + 2deg)); }
+}
+
+@keyframes stickerFloatAlt {
+  0%, 100% { transform: translateY(0) rotate(var(--sticker-rot, 0deg)); }
+  50% { transform: translateY(3px) rotate(calc(var(--sticker-rot, 0deg) - 1.5deg)); }
+}
+
+.sticker.idle-animate {
+  animation: stickerFloat var(--float-duration, 4s) ease-in-out infinite;
+  animation-delay: var(--float-delay, 0s);
+}
+
+.sticker.idle-animate-alt {
+  animation: stickerFloatAlt var(--float-duration, 3.5s) ease-in-out infinite;
+  animation-delay: var(--float-delay, 0s);
+}
+
+/* ── Image Sticker (PNG with hover swap) ── */
+.image-sticker {
+  pointer-events: auto;
+  cursor: pointer;
+  z-index: var(--z-stickers, 1);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.image-sticker.revealed {
+  opacity: 1;
+}
+
+.image-sticker .image-sticker-frame {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  -webkit-user-drag: none;
+}
+
+.image-sticker .image-sticker-frame[data-frame="0"] {
+  transform: scaleX(1.034) scaleY(1.10);
+  transform-origin: center center;
+}
+
+.image-sticker .image-sticker-frame[data-frame="1"],
+.image-sticker .image-sticker-frame[data-frame="2"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  transform: scaleX(1.01);
+  transform-origin: center center;
+}
+
+/* ── Naruto sticker: no scale transforms, anchor to bottom ── */
+#sticker-naruto .image-sticker-frame {
+  object-position: bottom;
+}
+#sticker-naruto .image-sticker-frame[data-frame="0"] {
+  transform: none;
+}
+#sticker-naruto .image-sticker-frame[data-frame="1"],
+#sticker-naruto .image-sticker-frame[data-frame="2"],
+#sticker-naruto .image-sticker-frame[data-frame="3"] {
+  position: absolute;
+  bottom: 0;
+  top: auto;
+  left: 0;
+  visibility: hidden;
+  transform: none;
+}
+
+/* ── Speech Bubble ── */
+.speech-bubble {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform-origin: center bottom;
+  background: var(--color-white, #fff);
+  color: var(--color-ink, #1a1a1a);
+  font-family: var(--font-hand, 'Caveat', cursive);
+  font-size: 16px;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 14px;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(-50%) scale(0.8) translateY(4px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+  z-index: 10;
+  border: 1.5px solid rgba(0, 0, 0, 0.08);
+}
+
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  margin-left: -6px;
+  width: 12px;
+  height: 12px;
+  background: var(--color-white, #fff);
+  border-right: 1.5px solid rgba(0, 0, 0, 0.08);
+  border-bottom: 1.5px solid rgba(0, 0, 0, 0.08);
+  transform: rotate(45deg);
+}
+
+.image-sticker:hover .speech-bubble {
+  opacity: 1;
+  transform: translateX(-50%) scale(1) translateY(0);
+}
+
+/* ── Draggable Sticker (PNG, movable) ── */
+.draggable-sticker {
+  pointer-events: auto;
+  cursor: grab;
+  z-index: var(--z-stickers, 1);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  touch-action: none;
+}
+
+.draggable-sticker.revealed {
+  opacity: 1;
+}
+
+.draggable-sticker img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+.draggable-sticker.is-dragging {
+  cursor: grabbing;
+  z-index: 100;
+}
+
+/* Reduced motion: disable idle animations */
+@media (prefers-reduced-motion: reduce) {
+  .sticker.idle-animate,
+  .sticker.idle-animate-alt {
+    animation: none;
+  }
+}
+
+/* ============================================
+   CHAI RECIPE PANEL — Recipe Notebook Page
+   Aesthetic: handwritten journal / illustrated recipe book
+   Shell slide-in from .resume-panel in base.css
+   ============================================ */
+
+/* ── Panel sheet — notebook page ── */
+.chai-panel__sheet {
+  max-width: 620px;
+  background: #FDF8F0;
+  background-image:
+    repeating-linear-gradient(
+      transparent 0px,
+      transparent 31px,
+      rgba(180, 160, 130, 0.12) 31px,
+      rgba(180, 160, 130, 0.12) 32px
+    );
+  border-left: none;
+  box-shadow: -12px 0 50px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ── Close button ── */
+.chai-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--color-ink-muted);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.chai-close:hover {
+  background: rgba(0, 0, 0, 0.08);
+  color: var(--color-ink);
+}
+
+.chai-close svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ── Notebook scrollable area ── */
+.chai-notebook {
+  flex: 1;
+  overflow-y: auto;
+  padding: 48px 40px 60px 56px;
+  overscroll-behavior: contain;
+  position: relative;
+}
+
+.chai-notebook::-webkit-scrollbar {
+  width: 3px;
+}
+
+.chai-notebook::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chai-notebook::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 3px;
+}
+
+/* ── Ring holes (left margin) ── */
+.chai-rings {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  padding-top: 60px;
+  pointer-events: none;
+}
+
+.chai-rings span {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid rgba(160, 140, 110, 0.25);
+  background: rgba(160, 140, 110, 0.06);
+}
+
+/* ── Title area ── */
+.chai-title-area {
+  margin-bottom: 28px;
+  position: relative;
+}
+
+.chai-eyebrow {
+  font-family: var(--font-hand, 'Caveat', cursive);
+  font-size: 18px;
+  color: var(--color-ink-muted);
+  margin-bottom: 4px;
+}
+
+.chai-title {
+  font-family: var(--font-hand, 'Caveat', cursive);
+  font-size: clamp(2.8rem, 5vw, 3.6rem);
+  font-weight: 700;
+  color: var(--color-ink);
+  line-height: 1;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+/* Underline scribble under title */
+.chai-title::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 80%;
+  height: 3px;
+  background: var(--color-accent);
+  opacity: 0.5;
+  border-radius: 2px;
+  transform: rotate(-0.5deg);
+}
+
+.chai-subtitle-note {
+  font-family: var(--font-hand, 'Caveat', cursive);
+  font-size: 17px;
+  color: var(--color-ink-soft);
+  line-height: 1.4;
+  margin-top: 6px;
+}
+
+/* ── Margin notes ── */
+.chai-margin-note {
+  position: absolute;
+  right: 24px;
+  font-family: var(--font-hand, 'Caveat', cursive);
+  font-size: 15px;
+  color: var(--color-accent);
+  transform: rotate(3deg);
+  line-height: 1.3;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.chai-margin-note--top {
+  top: 60px;
+}
+
+/* ── Intro note ── */
+.chai-intro-note {
+  margin-bottom: 32px;
+  padding: 12px 16px;
+  background: rgba(243, 123, 117, 0.06);
+  border-radius: 4px;
+  transform: rotate(-0.3deg);
+}
+
+.chai-intro-note p {
+  font-family: var(--font-hand, 'Caveat', cursive);
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--color-ink-soft);
+  max-width: none;
+}
+
+/* ── Ingredients list ── */
+.chai-ingredients-section {
+  margin-bottom: 32px;
+}
+
+.chai-list-heading {
+  font-family: var(--font-hand, 'Caveat', cursive);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--color-ink);
+  margin-bottom: 12px;
+  line-height: 1;
+}
+
+.chai-ingredients-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px;
+}
+
+.chai-ingredients-list li {
+  font-family: var(--font-hand, 'Caveat', cursive);
+  font-size: 19px;
+  color: var(--color-ink-soft);
+  padding: 4px 0;
+  line-height: 1.4;
+  position: relative;
+  padding-left: 16px;
+}
+
+/* Bullet dash */
+.chai-ingredients-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--color-ink-muted);
+}
+
+.chai-qty {
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+.chai-aside {
+  font-size: 16px;
+  color: var(--color-ink-muted);
+}
+
+.chai-scribble {
+  font-family: var(--font-hand, 'Caveat', cursive);
+  font-size: 16px;
+  color: var(--color-accent);
+  transform: rotate(-1deg);
+  margin-top: 4px;
+  opacity: 0.8;
+}
+
+/* ── Divider doodle ── */
+.chai-divider {
+  margin: 24px 0;
+  text-align: center;
+  color: var(--color-ink-muted);
+  opacity: 0.3;
+}
+
+.chai-divider svg {
+  width: 60%;
+  height: auto;
+}
+
+/* ── Steps — organic layout ── */
+.chai-step {
+  position: relative;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 32px;
+}
+
+.chai-step--flip {
+  flex-direction: row-reverse;
+}
+
+.chai-step__illustration {
+  flex: 0 0 169px;
+  position: relative;
+}
+
+.chai-step__illustration img {
+  width: 100%;
+  height: auto;
+  border: none;
+  transform: rotate(-1deg);
+  transition: transform 0.3s ease;
+}
+
+.chai-step--flip .chai-step__illustration img {
+  transform: rotate(1.5deg);
+}
+
+.chai-step:hover .chai-step__illustration img {
+  transform: rotate(0deg) scale(1.02);
+}
+
+.chai-step__content {
+  flex: 1;
+  position: relative;
+}
+
+.chai-step__num {
+  font-family: var(--font-hand, 'Caveat', cursive);
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--color-ink);
+  line-height: 1;
+  display: inline;
+  margin-right: 4px;
+}
+
+.chai-step__heading {
+  font-family: var(--font-hand, 'Caveat', cursive);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-ink);
+  display: inline;
+  line-height: 1;
+  text-decoration: underline;
+  text-decoration-color: rgba(243, 123, 117, 0.3);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+}
+
+.chai-step__body {
+  font-family: var(--font-hand, 'Caveat', cursive);
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--color-ink-soft);
+  margin-top: 8px;
+  max-width: none;
+}
+
+.chai-step__scribble {
+  font-family: var(--font-hand, 'Caveat', cursive);
+  font-size: 16px;
+  color: var(--color-accent);
+  margin-top: 6px;
+  transform: rotate(-0.5deg);
+  opacity: 0.75;
+  line-height: 1.3;
+}
+
+/* ── Closing note ── */
+.chai-closing-note {
+  margin-top: 20px;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px dashed rgba(0, 0, 0, 0.1);
+}
+
+.chai-closing-note p {
+  font-family: var(--font-hand, 'Caveat', cursive);
+  font-size: 20px;
+  color: var(--color-ink-soft);
+  line-height: 1.5;
+  max-width: 35ch;
+  margin: 0 auto;
+}
+
+.chai-sign {
+  font-family: var(--font-hand, 'Caveat', cursive);
+  font-size: 24px;
+  color: var(--color-accent);
+  margin-top: 8px;
+}
+
+/* ── Mobile ── */
+@media (max-width: 640px) {
+  .chai-panel__sheet {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+  }
+
+  .chai-notebook {
+    padding: 40px 24px 48px 40px;
+  }
+
+  .chai-rings {
+    left: 12px;
+    gap: 60px;
+  }
+
+  .chai-rings span {
+    width: 10px;
+    height: 10px;
+  }
+
+  .chai-step {
+    flex-direction: column;
+  }
+
+  .chai-step--flip {
+    flex-direction: column;
+  }
+
+  .chai-step__illustration {
+    flex: 0 0 auto;
+    max-width: 208px;
+  }
+
+  .chai-margin-note {
+    position: static;
+    transform: rotate(1deg);
+    margin-bottom: 16px;
+    text-align: right;
+  }
+}

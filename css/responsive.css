@@ -1,0 +1,164 @@
+/* ============================================
+   RESPONSIVE.CSS — Mobile & Reduced Motion
+   ============================================ */
+
+/* ── Mobile adjustments ── */
+@media (max-width: 768px) {
+  /* Increase card tap targets */
+  .card {
+    min-height: 80px;
+  }
+
+  /* Hide decorative elements on small screens */
+  .sticker:nth-child(n+5) {
+    display: none;
+  }
+
+  /* Larger game controls */
+  .color-swatch {
+    width: 40px;
+    height: 40px;
+  }
+
+  .game-btn {
+    padding: var(--space-md) var(--space-lg);
+    font-size: var(--text-base);
+  }
+
+  /* Simpler hero on mobile */
+  .hero-name {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+  }
+
+  /* Floating toolbar — smaller on mobile */
+  .floating-toolbar {
+    top: 12px;
+    padding: 4px 6px;
+  }
+
+  .toolbar-btn {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+
+  /* Hide social dock & tools toolbar on small screens */
+  .social-dock,
+  .tools-toolbar {
+    display: none;
+  }
+
+  /* Profile avatar smaller on mobile */
+  .profile-avatar {
+    width: 34px;
+    height: 34px;
+    top: 12px;
+    right: 14px;
+  }
+
+  /* Resume panel full-width on mobile */
+  .resume-panel__sheet {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+  }
+
+  .resume-panel__header {
+    padding: 16px 20px;
+  }
+
+  .resume-panel__body {
+    padding: 20px;
+  }
+
+  /* Canvas logo smaller */
+  .canvas-name {
+    top: 14px;
+    left: 16px;
+  }
+
+  .canvas-name img {
+    height: 18px;
+  }
+
+  /* Work stack decks — compact on tablet */
+  .work-stack__deck {
+    width: 180px;
+    height: 200px;
+  }
+
+  .work-stack__name {
+    font-size: var(--text-base);
+  }
+
+  /* Web slider — tighter on tablet */
+  .web-slider {
+    width: 95vw;
+    padding: 2vh 0;
+  }
+
+  .web-slider__title {
+    font-size: var(--text-lg);
+  }
+
+  .web-slide__info {
+    flex-wrap: wrap;
+  }
+
+  .web-slide__visit {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-tagline {
+    font-size: var(--text-base);
+  }
+
+  .card-title {
+    font-size: var(--text-lg);
+  }
+
+  .toolbar-btn {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+
+  .browser-mockup__actions {
+    display: none;
+  }
+
+  .web-slider__arrow {
+    width: 32px;
+    height: 32px;
+  }
+
+  .coming-soon-page__title {
+    font-size: var(--text-2xl);
+  }
+}
+
+/* ── Prefers reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  /* Kill all CSS animations */
+  .sticker.idle-animate,
+  .sticker.idle-animate-alt {
+    animation: none !important;
+  }
+
+  .drag-hint svg {
+    animation: none !important;
+  }
+
+  /* Instant transitions */
+  .card,
+  .custom-cursor .cursor-ring,
+  .page-back,
+  .minimap {
+    transition-duration: 0.01ms !important;
+  }
+
+  /* Skip loader */
+  .loader {
+    display: none !important;
+  }
+}
