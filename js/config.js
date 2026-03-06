@@ -144,13 +144,8 @@ const CONFIG = {
       width: 240, height: 240,
       depth: 2, rotation: -3,
       data: {
-        src: 'assets/naruto/frame_0_delay-0.1s.gif',
-        hoverFrames: [
-          'assets/naruto/frame_0_delay-0.1s.gif',
-          'assets/naruto/frame_1_delay-0.1s.gif',
-          'assets/naruto/frame_2_delay-0.1s.gif',
-          'assets/naruto/frame_3_delay-0.1s.gif'
-        ],
+        src: 'assets/naruto/1.png',
+        hoverSrc: 'assets/naruto/3.png',
         alt: 'Play Naruto Runner',
         speechBubble: "Let's run, dattebayo!",
         clickAction: 'openNarutoGame'
