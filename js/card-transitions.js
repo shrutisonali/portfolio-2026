@@ -253,18 +253,11 @@ class CardTransitions {
 
         <div class="about-grid">
           <div class="about-col about-col--label">
-            <span class="about-label">Designer, Builder</span>
+            <span class="about-label">Architecture → Brand → Web → AI</span>
           </div>
 
           <div class="about-col about-col--mid">
             <p class="about-desc">${about.bio}</p>
-            <div class="about-avatar-row">
-              <img class="about-avatar" src="assets/Profile Picture4.png" alt="Shruti" />
-              <div class="about-avatar-info">
-                <span class="about-avatar-name">Shruti</span>
-                <span class="about-avatar-role">Creative Director</span>
-              </div>
-            </div>
           </div>
 
           <div class="about-col about-col--statement">
@@ -279,7 +272,10 @@ class CardTransitions {
 
         <div class="about-section about-skills-section">
           <div class="about-skills">
-            ${about.skills.map(s => `<span class="about-skill-tag">${s}</span>`).join('')}
+            ${about.skills.map((s, i) => {
+              const colors = ['#F37B75', '#F8C614', '#A0D4A6', '#6CC2EA', '#EA89B9', '#F37B75'];
+              return `<span class="about-skill-tag" style="background: ${colors[i % colors.length]}; color: #fff;">${s}</span>`;
+            }).join('')}
           </div>
         </div>
       </div>
