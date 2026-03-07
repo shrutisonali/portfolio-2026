@@ -60,7 +60,7 @@ const CONFIG = {
       id: 'illust-designer',
       type: 'image-sticker',
       x: 1920,
-      y: 1840,
+      y: 1920,
       width: 316,
       height: 316,
       depth: 2,
