@@ -30,8 +30,8 @@ const CONFIG = {
     hero:    { x: 2500, y: 2000 },
     work:    { x: 2500, y: 2000 },
     play:    { x: 2900, y: 1600 },
-    about:   { x: 2100, y: 2450 },
-    contact: { x: 2900, y: 2400 },
+    about:   { x: 2100, y: 2300 },
+    contact: { x: 2900, y: 2250 },
   },
 
   // ── Element definitions ──
@@ -233,7 +233,7 @@ const CONFIG = {
       id: 'about',
       type: 'info-card',
       x: 2050,
-      y: 2300,
+      y: 2150,
       width: 280,
       height: 280,
       depth: 3,
@@ -249,7 +249,7 @@ const CONFIG = {
       id: 'contact',
       type: 'info-card',
       x: 2800,
-      y: 2050,
+      y: 1900,
       width: 280,
       height: 280,
       depth: 3,

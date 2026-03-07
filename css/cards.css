@@ -456,7 +456,7 @@
 }
 
 .info-card--about .info-card__cta {
-  color: var(--color-ink-muted);
+  color: var(--color-ink);
 }
 
 /* ── Contact variant — sage green, warm & inviting ── */

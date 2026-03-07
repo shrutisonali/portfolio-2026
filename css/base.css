@@ -358,6 +358,12 @@ ul, ol {
 .resume-panel.open {
   pointer-events: all;
   visibility: visible;
+  cursor: auto;
+}
+
+.resume-panel.open,
+.resume-panel.open * {
+  cursor: auto !important;
 }
 
 .resume-panel__backdrop {

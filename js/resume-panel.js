@@ -12,10 +12,17 @@
 
   if (!avatar || !panel) return;
 
+  // Get custom cursor element
+  const customCursor = document.querySelector('.custom-cursor');
+
   function openPanel() {
     panel.classList.add('open');
     panel.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+
+    // Hide custom cursor and restore default
+    if (customCursor) customCursor.style.display = 'none';
+    document.body.classList.remove('has-custom-cursor');
 
     // Trap focus inside panel
     requestAnimationFrame(() => {
@@ -27,6 +34,13 @@
     panel.classList.remove('open');
     panel.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+
+    // Restore custom cursor
+    if (customCursor && !('ontouchstart' in window)) {
+      customCursor.style.display = '';
+      document.body.classList.add('has-custom-cursor');
+    }
+
     avatar.focus();
   }
 
