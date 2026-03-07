@@ -366,6 +366,11 @@ ul, ol {
   cursor: auto !important;
 }
 
+.resume-panel.open a,
+.resume-panel.open button {
+  cursor: pointer !important;
+}
+
 .resume-panel__backdrop {
   position: absolute;
   inset: 0;
