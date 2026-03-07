@@ -97,7 +97,7 @@
 /* ── Speech Bubble ── */
 .speech-bubble {
   position: absolute;
-  top: -40px;
+  top: -10px;
   left: 50%;
   transform-origin: center bottom;
   background: var(--color-white, #fff);
