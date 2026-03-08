@@ -658,7 +658,8 @@ class CardTransitions {
       return '';
     }).join('');
 
-    this.projectOverlay.className = 'page-overlay case-study-page';
+    const wasActive = this.projectOverlay.classList.contains('active');
+    this.projectOverlay.className = 'page-overlay case-study-page' + (wasActive ? ' active' : '');
     this.projectOverlay.innerHTML = `
       <div class="case-study">
         <div class="case-study__hero">
