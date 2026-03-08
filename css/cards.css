@@ -25,13 +25,13 @@
 }
 
 .hero-name {
-  font-style: italic;
+  font-style: normal;
 }
 
 .hero-highlight {
   position: relative;
   display: inline-block;
-  font-style: italic;
+  font-style: normal;
   padding: 0 0.05em;
 }
 
@@ -643,7 +643,7 @@
 }
 
 .work-stack__card-title em {
-  font-style: italic;
+  font-style: normal;
 }
 
 .work-stack__card-desc {
@@ -665,7 +665,7 @@
   font-family: var(--font-display);
   font-size: var(--text-lg);
   font-weight: 400;
-  font-style: italic;
+  font-style: normal;
   color: var(--color-ink);
   margin-bottom: var(--space-xs);
   transition: color 0.3s ease;
