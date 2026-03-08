@@ -1258,12 +1258,12 @@
 /* Next case study CTA */
 .case-study__next {
   margin-top: var(--space-4xl);
-  padding: var(--space-3xl) 0;
+  padding: var(--space-3xl) 0 var(--space-2xl);
   border-top: 1px solid rgba(0, 0, 0, 0.08);
-  text-align: center;
   cursor: pointer;
   opacity: 0;
   transform: translateY(20px);
+  max-width: 480px;
 }
 
 .case-study__next.animate-in {
@@ -1278,20 +1278,44 @@
   letter-spacing: var(--tracking-wider);
   text-transform: uppercase;
   color: var(--color-ink-muted);
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.case-study__next-card {
+  display: block;
+}
+
+.case-study__next-thumb {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: var(--space-md);
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.case-study__next-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s var(--ease-out-expo);
+}
+
+.case-study__next:hover .case-study__next-thumb img {
+  transform: scale(1.04);
 }
 
 .case-study__next-title {
   font-family: var(--font-display);
-  font-size: var(--text-2xl);
-  font-weight: 300;
-  font-style: italic;
+  font-size: var(--text-lg);
+  font-weight: 500;
   color: var(--color-ink);
   transition: color 0.3s ease;
+  line-height: 1.3;
 }
 
 .case-study__next:hover .case-study__next-title {
-  color: var(--color-accent);
+  color: var(--color-ink-soft);
 }
 
 .case-study__next-industry {
@@ -1299,20 +1323,21 @@
   font-size: var(--text-xs);
   color: var(--color-ink-muted);
   letter-spacing: var(--tracking-wide);
-  margin-top: var(--space-xs);
+  margin-top: var(--space-2xs);
 }
 
 .case-study__next-arrow {
-  display: inline-block;
-  margin-top: var(--space-md);
-  font-size: var(--text-lg);
+  display: inline-flex;
+  align-items: center;
+  margin-top: var(--space-sm);
+  font-size: var(--text-sm);
   color: var(--color-ink-muted);
-  transition: transform 0.3s var(--ease-out-expo);
+  transition: transform 0.3s var(--ease-out-expo), color 0.3s ease;
 }
 
 .case-study__next:hover .case-study__next-arrow {
-  transform: translateY(4px);
-  color: var(--color-accent);
+  transform: translateX(4px);
+  color: var(--color-ink);
 }
 
 /* Responsive */

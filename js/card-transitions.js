@@ -687,9 +687,14 @@ class CardTransitions {
         </div>
         <div class="case-study__next" data-next-id="${nextProject.id}" role="button" tabindex="0" aria-label="View ${nextProject.title} case study">
           <p class="case-study__next-label">Next Case Study</p>
-          <h3 class="case-study__next-title">${nextProject.title}</h3>
-          <p class="case-study__next-industry">${nextProject.industry} — ${nextProject.year}</p>
-          <span class="case-study__next-arrow">&darr;</span>
+          <div class="case-study__next-card">
+            <div class="case-study__next-thumb">
+              <img src="${nextProject.heroImage}" alt="${nextProject.title}" loading="lazy">
+            </div>
+            <h3 class="case-study__next-title">${nextProject.title}</h3>
+            <p class="case-study__next-industry">${nextProject.industry} — ${nextProject.year}</p>
+          </div>
+          <span class="case-study__next-arrow">&rarr;</span>
         </div>
       </div>
     `;
