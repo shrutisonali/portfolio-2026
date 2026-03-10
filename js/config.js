@@ -22,9 +22,9 @@ const CONFIG = {
   maxZoom: 1.5,
   defaultZoom: (() => {
     const w = window.innerWidth;
-    if (w >= 2560) return 1.1;
-    if (w >= 1920) return 0.95;
-    if (w >= 1440) return 0.88;
+    if (w >= 2560) return 0.93;
+    if (w >= 1920) return 0.87;
+    if (w >= 1440) return 0.84;
     return 0.805;
   })(),
 

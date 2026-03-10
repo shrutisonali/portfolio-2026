@@ -138,54 +138,10 @@
 }
 
 /* ── Large screen optimizations (QHD / 4K) ── */
-@media (min-width: 1440px) {
-  .hero-headline {
-    font-size: clamp(3.2rem, 2rem + 3vw, 5.5rem);
-    max-width: 800px;
-  }
-
-  .hero-subtitle {
-    font-size: clamp(0.85rem, 0.8rem + 0.3vw, 1.05rem);
-  }
-
-  .work-stack__deck {
-    width: 240px;
-    height: 290px;
-  }
-
-  .info-card {
-    min-width: 300px;
-  }
-}
+/* Note: Canvas elements (hero, stickers, cards, work stacks) scale via
+   the dynamic defaultZoom in config.js. Only overlay/page styles here. */
 
 @media (min-width: 1920px) {
-  .hero-headline {
-    font-size: clamp(4rem, 2.5rem + 2.5vw, 6rem);
-    max-width: 900px;
-  }
-
-  .hero-subtitle {
-    font-size: clamp(0.9rem, 0.85rem + 0.3vw, 1.15rem);
-    margin-top: 2rem;
-  }
-
-  .work-stack__deck {
-    width: 260px;
-    height: 320px;
-  }
-
-  .work-stack__name {
-    font-size: var(--text-xl);
-  }
-
-  .card-thumbnail {
-    height: 220px;
-  }
-
-  .info-card {
-    min-width: 320px;
-  }
-
   .project-page-inner {
     max-width: 1100px;
   }
@@ -196,25 +152,6 @@
 }
 
 @media (min-width: 2560px) {
-  .hero-headline {
-    font-size: clamp(4.5rem, 3rem + 2vw, 7rem);
-    max-width: 1000px;
-  }
-
-  .hero-subtitle {
-    font-size: 1.1rem;
-    letter-spacing: 0.15em;
-  }
-
-  .work-stack__deck {
-    width: 280px;
-    height: 350px;
-  }
-
-  .card-thumbnail {
-    height: 260px;
-  }
-
   .project-page-inner {
     max-width: 1300px;
   }
