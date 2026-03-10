@@ -164,7 +164,7 @@ const CONFIG = {
           'assets/naruto/5.6.png'
         ],
         alt: 'Play Naruto Runner',
-        speechBubble: "Let's run, dattebayo!",
+        speechBubble: "Click me, dattebayo!",
         clickAction: 'openNarutoGame'
       }
     },
