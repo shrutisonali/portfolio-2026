@@ -138,34 +138,159 @@
 }
 
 /* ── Large screen optimizations (QHD / 4K) ── */
-/* Note: Canvas elements (hero, stickers, cards, work stacks) scale via
-   the dynamic defaultZoom in config.js. Only overlay/page styles here. */
+/* Canvas elements scale via defaultZoom in config.js.
+   Sub-pages (overlays) need explicit max-width bumps. */
 
-@media (min-width: 1920px) {
-  .project-page-inner {
+@media (min-width: 1440px) {
+  /* Web slider */
+  .web-slider {
+    max-width: 900px;
+  }
+
+  /* Game */
+  .game-container {
+    max-width: 900px;
+  }
+
+  /* Case study */
+  .case-study {
+    max-width: 960px;
+  }
+
+  /* Brand grid */
+  .brand-grid {
     max-width: 1100px;
   }
 
+  /* Project page */
+  .project-page-inner {
+    max-width: 1000px;
+  }
+
+  /* About */
   .about-page-inner {
+    max-width: 1200px;
+  }
+
+  /* Contact */
+  .contact-inner {
+    max-width: 700px;
+  }
+}
+
+@media (min-width: 1920px) {
+  /* Web slider */
+  .web-slider {
+    max-width: 1100px;
+  }
+
+  /* Game */
+  .game-container {
+    max-width: 1100px;
+  }
+
+  .game-title {
+    font-size: var(--text-3xl);
+  }
+
+  .game-subtitle {
+    font-size: var(--text-xl);
+  }
+
+  /* Case study */
+  .case-study {
+    max-width: 1100px;
+  }
+
+  /* Brand grid */
+  .brand-grid {
     max-width: 1300px;
+  }
+
+  .brand-grid__title {
+    font-size: var(--text-3xl);
+  }
+
+  /* Project page */
+  .project-page-inner {
+    max-width: 1200px;
+  }
+
+  .project-hero-title {
+    font-size: clamp(2.5rem, 3vw, 3.5rem);
+  }
+
+  /* About */
+  .about-page-inner {
+    max-width: 1400px;
+  }
+
+  /* Contact */
+  .contact-inner {
+    max-width: 800px;
+  }
+
+  .contact-statement {
+    font-size: clamp(2rem, 3vw, 3rem);
+  }
+
+  /* Web slide text */
+  .web-slider__title {
+    font-size: var(--text-2xl);
+  }
+
+  .web-slide__title,
+  .pkg-slide__title {
+    font-size: var(--text-lg);
   }
 }
 
 @media (min-width: 2560px) {
-  .project-page-inner {
+  /* Web slider */
+  .web-slider {
+    max-width: 1400px;
+  }
+
+  /* Game */
+  .game-container {
+    max-width: 1400px;
+  }
+
+  .game-title {
+    font-size: clamp(2.5rem, 3vw, 3.5rem);
+  }
+
+  /* Case study */
+  .case-study {
     max-width: 1300px;
   }
 
-  .about-page-inner {
-    max-width: 1500px;
+  .case-study__title {
+    font-size: var(--text-3xl);
   }
 
-  .case-study {
-    max-width: 1000px;
-  }
-
+  /* Brand grid */
   .brand-grid {
-    max-width: 1200px;
+    max-width: 1600px;
+  }
+
+  /* Project page */
+  .project-page-inner {
+    max-width: 1400px;
+  }
+
+  /* About */
+  .about-page-inner {
+    max-width: 1600px;
+  }
+
+  .about-photo img {
+    max-height: 720px;
+  }
+
+  /* Contact */
+  .contact-inner {
+    max-width: 900px;
   }
 }
 
