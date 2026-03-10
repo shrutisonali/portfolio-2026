@@ -32,6 +32,30 @@
   filter: drop-shadow(0 2px 8px rgba(0,0,0,0.08));
 }
 
+/* ── Large screen adjustments ── */
+@media (min-width: 1440px) {
+  .loader-sticker {
+    width: clamp(120px, 10vw, 200px);
+    height: clamp(120px, 10vw, 200px);
+  }
+}
+
+@media (min-width: 1920px) {
+  .loader-sticker {
+    width: clamp(160px, 10vw, 240px);
+    height: clamp(160px, 10vw, 240px);
+  }
+
+  .loader-counter {
+    font-size: clamp(8rem, 12vw, 16rem);
+  }
+
+  .loader-counter-wrap {
+    bottom: clamp(36px, 5vh, 72px);
+    right: clamp(36px, 5vw, 80px);
+  }
+}
+
 /* ── Counter (bottom-right) ── */
 .loader-counter-wrap {
   position: absolute;
