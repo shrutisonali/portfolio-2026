@@ -22,10 +22,10 @@ const CONFIG = {
   maxZoom: 1.5,
   defaultZoom: (() => {
     const w = window.innerWidth;
-    if (w >= 2560) return 0.93;
-    if (w >= 1920) return 0.87;
-    if (w >= 1440) return 0.84;
-    return 0.805;
+    if (w >= 2560) return 1.12;
+    if (w >= 1920) return 1.04;
+    if (w >= 1440) return 1.01;
+    return 0.966;
   })(),
 
   inertiaDecay: 0.92,
