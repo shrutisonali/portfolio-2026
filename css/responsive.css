@@ -2,15 +2,54 @@
    RESPONSIVE.CSS — Mobile & Reduced Motion
    ============================================ */
 
-/* ── Mobile adjustments ── */
+/* ── Mobile bottom nav (hidden on desktop) ── */
+.mobile-nav {
+  display: none;
+}
+
+/* ── Drag hint: show desktop text by default, hide mobile ── */
+.drag-hint__text-mobile {
+  display: none;
+}
+
+/* ── Tablet adjustments (768px – 1023px) ── */
+@media (max-width: 1023px) and (min-width: 769px) {
+  /* Floating toolbar — smaller on tablet */
+  .floating-toolbar {
+    top: 12px;
+    padding: 4px 6px;
+  }
+
+  .toolbar-btn {
+    font-size: 12px;
+    padding: 5px 12px;
+  }
+
+  /* Hide tools toolbar on tablet */
+  .tools-toolbar {
+    display: none;
+  }
+
+  /* Work stack decks — compact on tablet */
+  .work-stack__deck {
+    width: 180px;
+    height: 220px;
+  }
+
+  .work-stack__name {
+    font-size: var(--text-base);
+  }
+}
+
+/* ── Mobile adjustments (768px and below) ── */
 @media (max-width: 768px) {
   /* Increase card tap targets */
   .card {
     min-height: 80px;
   }
 
-  /* Hide decorative elements on small screens */
-  .sticker:nth-child(n+5) {
+  /* Hide decorative stickers beyond 3rd on small screens */
+  .sticker:nth-child(n+4) {
     display: none;
   }
 
@@ -25,26 +64,78 @@
     font-size: var(--text-base);
   }
 
-  /* Simpler hero on mobile */
-  .hero-name {
-    font-size: clamp(2.5rem, 10vw, 4rem);
-  }
-
-  /* Floating toolbar — smaller on mobile */
-  .floating-toolbar {
-    top: 12px;
-    padding: 4px 6px;
-  }
-
-  .toolbar-btn {
-    font-size: 11px;
-    padding: 5px 10px;
-  }
-
-  /* Hide social dock & tools toolbar on small screens */
+  /* ── Hide desktop-only UI elements ── */
+  .floating-toolbar,
   .social-dock,
-  .tools-toolbar {
+  .tools-toolbar,
+  .claude-badge {
+    display: none !important;
+  }
+
+  /* Show mobile bottom nav */
+  .mobile-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--z-nav);
+    background: var(--color-white);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 6px 0 env(safe-area-inset-bottom, 8px);
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.04);
+  }
+
+  .mobile-nav__btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 6px 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background 0.2s ease, color 0.2s ease;
+    color: var(--color-ink-muted);
+  }
+
+  .mobile-nav__btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .mobile-nav__btn span {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  .mobile-nav__btn.nav-active {
+    color: var(--color-accent);
+    background: rgba(243, 123, 117, 0.08);
+  }
+
+  .mobile-nav__btn:active {
+    background: rgba(0, 0, 0, 0.04);
+  }
+
+  /* Drag hint: show mobile text, hide desktop */
+  .drag-hint__text-desktop {
     display: none;
+  }
+
+  .drag-hint__text-mobile {
+    display: inline;
+  }
+
+  /* Move drag hint above mobile nav */
+  .drag-hint {
+    bottom: calc(60px + env(safe-area-inset-bottom, 8px) + 12px);
+    top: auto;
   }
 
   /* Profile avatar smaller on mobile */
@@ -80,17 +171,60 @@
     height: 18px;
   }
 
-  /* Work stack decks — compact on tablet */
+  /* ── Canvas element scaling for mobile ──
+     At zoom 0.55, elements are already smaller but
+     some are still too large relative to the viewport.
+     Use CSS scale (separate from transform to preserve rotation). */
+  .image-sticker,
+  .draggable-sticker {
+    scale: 0.7;
+  }
+
+  /* Work stack decks — compact on mobile */
   .work-stack__deck {
-    width: 180px;
+    width: 170px;
     height: 200px;
   }
 
   .work-stack__name {
+    font-size: var(--text-sm);
+  }
+
+  .work-stack__tags span {
+    font-size: 8px;
+    padding: 2px 6px;
+  }
+
+  /* Info cards — smaller on mobile */
+  .info-card {
+    padding: 12px;
+    border-radius: 24px;
+  }
+
+  .info-card__title {
     font-size: var(--text-base);
   }
 
-  /* Web slider — tighter on tablet */
+  /* Hero headline — allow wrapping on mobile */
+  .hero-headline {
+    white-space: normal;
+    font-size: clamp(2rem, 8vw, 3.5rem);
+    max-width: 500px;
+  }
+
+  .hero-subtitle {
+    font-size: var(--text-xs);
+    margin-top: var(--space-md);
+  }
+
+  /* Speech bubbles — smaller */
+  .speech-bubble {
+    font-size: 13px;
+    padding: 6px 10px;
+    border-radius: 10px;
+  }
+
+  /* Web slider — tighter on mobile */
   .web-slider {
     width: 95vw;
     padding: 2vh 0;
@@ -107,20 +241,44 @@
   .web-slide__visit {
     margin-left: 0;
   }
+
+  /* Back button — adjust for mobile nav */
+  .page-back {
+    top: var(--space-md);
+    left: var(--space-md);
+    padding: var(--space-sm) var(--space-md);
+    font-size: var(--text-xs);
+  }
+
+  .page-back span {
+    display: none;
+  }
+
+  /* Disable draggable sticker interactions on mobile (conflicts with canvas pan) */
+  .draggable-sticker {
+    pointer-events: none;
+    cursor: default;
+  }
+
+  /* Custom cursor hidden on touch */
+  .custom-cursor {
+    display: none !important;
+  }
 }
 
+/* ── Small phone adjustments (480px and below) ── */
 @media (max-width: 480px) {
+  .hero-headline {
+    font-size: clamp(1.8rem, 7vw, 2.8rem);
+    max-width: 420px;
+  }
+
   .hero-tagline {
     font-size: var(--text-base);
   }
 
   .card-title {
     font-size: var(--text-lg);
-  }
-
-  .toolbar-btn {
-    font-size: 10px;
-    padding: 4px 8px;
   }
 
   .browser-mockup__actions {
@@ -134,6 +292,36 @@
 
   .coming-soon-page__title {
     font-size: var(--text-2xl);
+  }
+
+  /* Even smaller stickers on tiny screens */
+  .image-sticker,
+  .draggable-sticker {
+    scale: 0.6;
+  }
+
+  /* Work stack even more compact */
+  .work-stack__deck {
+    width: 150px;
+    height: 180px;
+  }
+
+  .work-stack__card-desc {
+    display: none;
+  }
+
+  /* Mobile nav tighter */
+  .mobile-nav__btn {
+    padding: 4px 8px;
+  }
+
+  .mobile-nav__btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .mobile-nav__btn span {
+    font-size: 9px;
   }
 }
 

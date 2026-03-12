@@ -11,6 +11,7 @@ class Navigation {
     this.claudeBadge = document.querySelector('.claude-badge');
     this.toolsToolbar = document.querySelector('.tools-toolbar');
     this.profileAvatar = document.querySelector('.profile-avatar');
+    this.mobileNav = document.querySelector('.mobile-nav');
     this.navLinks = document.querySelectorAll('[data-nav-target]');
     this.activeLink = null;
 
@@ -37,15 +38,19 @@ class Navigation {
   }
 
   _setActive(link) {
-    // Remove active from all
+    // Remove active from all nav links (both desktop toolbar & mobile nav)
     this.navLinks.forEach(l => l.classList.remove('nav-active'));
-    link.classList.add('nav-active');
+    // Set active on both desktop and mobile buttons for the same target
+    const target = link.dataset.navTarget;
+    this.navLinks.forEach(l => {
+      if (l.dataset.navTarget === target) l.classList.add('nav-active');
+    });
     this.activeLink = link;
   }
 
   /** Show floating UI with animation */
   reveal() {
-    const elements = [this.toolbar, this.canvasName, this.socialDock, this.claudeBadge, this.toolsToolbar, this.profileAvatar].filter(Boolean);
+    const elements = [this.toolbar, this.canvasName, this.socialDock, this.claudeBadge, this.toolsToolbar, this.profileAvatar, this.mobileNav].filter(Boolean);
 
     if (prefersReducedMotion()) {
       elements.forEach(el => {
@@ -101,11 +106,19 @@ class Navigation {
         { opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(1.7)', delay: 0.35 }
       );
     }
+
+    // Mobile nav rises from bottom
+    if (this.mobileNav) {
+      gsap.fromTo(this.mobileNav,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out', delay: 0.3 }
+      );
+    }
   }
 
   /** Hide floating UI */
   hide() {
-    const elements = [this.toolbar, this.canvasName, this.socialDock, this.claudeBadge, this.toolsToolbar, this.profileAvatar].filter(Boolean);
+    const elements = [this.toolbar, this.canvasName, this.socialDock, this.claudeBadge, this.toolsToolbar, this.profileAvatar, this.mobileNav].filter(Boolean);
     elements.forEach(el => {
       gsap.to(el, { opacity: 0, duration: 0.3, ease: 'power2.in' });
     });
@@ -113,7 +126,7 @@ class Navigation {
 
   /** Show floating UI */
   show() {
-    const elements = [this.toolbar, this.canvasName, this.socialDock, this.claudeBadge, this.toolsToolbar, this.profileAvatar].filter(Boolean);
+    const elements = [this.toolbar, this.canvasName, this.socialDock, this.claudeBadge, this.toolsToolbar, this.profileAvatar, this.mobileNav].filter(Boolean);
     elements.forEach(el => {
       gsap.to(el, { opacity: 1, duration: 0.4, ease: 'power2.out' });
     });

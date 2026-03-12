@@ -18,14 +18,19 @@ const CONFIG = {
   startX: 2500,
   startY: 2000,
 
-  minZoom: 0.4,
+  minZoom: (() => {
+    const w = window.innerWidth;
+    return w < 768 ? 0.3 : 0.4;
+  })(),
   maxZoom: 1.5,
   defaultZoom: (() => {
     const w = window.innerWidth;
     if (w >= 2560) return 1.4;
     if (w >= 1920) return 1.3;
     if (w >= 1440) return 1.26;
-    return 1.21;
+    if (w >= 1024) return 1.21;
+    if (w >= 768) return 0.85;
+    return 0.55;
   })(),
 
   inertiaDecay: 0.92,
