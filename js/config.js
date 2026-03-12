@@ -16,7 +16,10 @@ const CONFIG = {
   },
 
   startX: 2500,
-  startY: 2000,
+  startY: (() => {
+    const w = window.innerWidth;
+    return w < 768 ? 1850 : 2000;
+  })(),
 
   minZoom: (() => {
     const w = window.innerWidth;
@@ -37,12 +40,43 @@ const CONFIG = {
   inertiaDuration: 1.2,
   clickThreshold: 5,
 
-  navTargets: {
-    hero:    { x: 2500, y: 2000 },
-    work:    { x: 2500, y: 2000 },
-    play:    { x: 2900, y: 1600 },
-    about:   { x: 2100, y: 2300 },
-    contact: { x: 2900, y: 2250 },
+  navTargets: (() => {
+    const w = window.innerWidth;
+    if (w < 768) {
+      return {
+        hero:    { x: 2500, y: 1850 },
+        work:    { x: 2500, y: 1400 },
+        play:    { x: 2500, y: 2500 },
+        about:   { x: 2250, y: 2150 },
+        contact: { x: 2650, y: 2150 },
+      };
+    }
+    return {
+      hero:    { x: 2500, y: 2000 },
+      work:    { x: 2500, y: 2000 },
+      play:    { x: 2900, y: 1600 },
+      about:   { x: 2100, y: 2300 },
+      contact: { x: 2900, y: 2250 },
+    };
+  })(),
+
+  // ── Mobile element position overrides ──
+  // At zoom 0.55 on 375px phone, visible area ≈ 682x1270
+  // Centered on (2500, 1850), visible x: ~2159–2841, y: ~1215–2485
+  mobileOverrides: {
+    'hero':              { x: 2210, y: 1680, width: 580 },
+    'stack-web':         { x: 2170, y: 1320 },
+    'stack-brand':       { x: 2530, y: 1320 },
+    'stack-packaging':   { x: 2170, y: 2280 },
+    'illust-designer':   { x: 2160, y: 1870, width: 260 },
+    'illust-chai':       { x: 2590, y: 1870, width: 240 },
+    'about':             { x: 2170, y: 2060, width: 260 },
+    'contact':           { x: 2520, y: 2060, width: 260 },
+    'sticker-outfit':    { x: 2560, y: 1520, width: 200 },
+    'sticker-watering':  { x: 2190, y: 2200, width: 220 },
+    'sticker-naruto':    { x: 2500, y: 2400, width: 200 },
+    'sticker-bookshelf': { x: 2550, y: 2280, width: 200 },
+    'sticker-plant':     { x: 2200, y: 2480, width: 180 },
   },
 
   // ── Element definitions ──

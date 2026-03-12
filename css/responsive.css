@@ -171,14 +171,8 @@
     height: 18px;
   }
 
-  /* ── Canvas element scaling for mobile ──
-     At zoom 0.55, elements are already smaller but
-     some are still too large relative to the viewport.
-     Use CSS scale (separate from transform to preserve rotation). */
-  .image-sticker,
-  .draggable-sticker {
-    scale: 0.7;
-  }
+  /* Canvas elements are repositioned and resized via JS mobileOverrides.
+     No additional CSS scale needed — sizes are set directly. */
 
   /* Work stack decks — compact on mobile */
   .work-stack__deck {
@@ -205,16 +199,25 @@
     font-size: var(--text-base);
   }
 
-  /* Hero headline — allow wrapping on mobile */
+  /* Hero headline — bigger and centered on mobile */
+  .hero-element {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .hero-headline {
-    white-space: normal;
-    font-size: clamp(2rem, 8vw, 3.5rem);
-    max-width: 500px;
+    white-space: nowrap;
+    font-size: clamp(2.8rem, 5vw + 1.5rem, 4.2rem);
+    max-width: none;
+    text-align: center;
   }
 
   .hero-subtitle {
-    font-size: var(--text-xs);
+    font-size: var(--text-sm);
     margin-top: var(--space-md);
+    text-align: center;
   }
 
   /* Speech bubbles — smaller */
@@ -269,8 +272,7 @@
 /* ── Small phone adjustments (480px and below) ── */
 @media (max-width: 480px) {
   .hero-headline {
-    font-size: clamp(1.8rem, 7vw, 2.8rem);
-    max-width: 420px;
+    font-size: clamp(2.4rem, 5vw + 1rem, 3.5rem);
   }
 
   .hero-tagline {
@@ -294,11 +296,7 @@
     font-size: var(--text-2xl);
   }
 
-  /* Even smaller stickers on tiny screens */
-  .image-sticker,
-  .draggable-sticker {
-    scale: 0.6;
-  }
+  /* Stickers already resized via JS mobileOverrides */
 
   /* Work stack even more compact */
   .work-stack__deck {

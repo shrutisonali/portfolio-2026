@@ -10,12 +10,21 @@ class ElementPlacer {
   }
 
   placeAll(elements) {
+    const isMobile = window.innerWidth < 768;
+    const overrides = isMobile ? (CONFIG.mobileOverrides || {}) : {};
+
     for (const cfg of elements) {
-      const el = this.createElement(cfg);
+      // Apply mobile overrides if available
+      const mobileCfg = overrides[cfg.id];
+      const finalCfg = mobileCfg
+        ? { ...cfg, ...mobileCfg, data: cfg.data, type: cfg.type, depth: cfg.depth, rotation: cfg.rotation }
+        : cfg;
+
+      const el = this.createElement(finalCfg);
       if (el) {
-        this.positionElement(el, cfg);
+        this.positionElement(el, finalCfg);
         this.world.appendChild(el);
-        this.elements.set(cfg.id, el);
+        this.elements.set(finalCfg.id, el);
       }
     }
   }
