@@ -226,12 +226,63 @@
     font-size: var(--text-lg);
   }
 
+  /* Stacked slide info layout on mobile for consistency */
   .web-slide__info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    padding: 12px 0 0;
+  }
+
+  .web-slide__tags {
     flex-wrap: wrap;
+    gap: 6px;
   }
 
   .web-slide__visit {
     margin-left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px 16px;
+    font-size: 12px;
+    margin-top: 2px;
+  }
+
+  /* Packaging slide info — same stacked layout */
+  .pkg-slide__info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    padding: 12px 0 0;
+  }
+
+  .pkg-slide__tags {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .pkg-slide__cta {
+    margin-left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px 16px;
+    font-size: 12px;
+    margin-top: 2px;
+  }
+
+  /* Force desktop aspect ratio for browser mockup on mobile */
+  .browser-mockup {
+    flex: none;
+    aspect-ratio: 16 / 10;
+  }
+
+  .browser-mockup__content {
+    position: relative;
+  }
+
+  .browser-mockup__screenshot {
+    object-fit: cover;
+    object-position: top left;
   }
 
   /* Back button — adjust for mobile nav */

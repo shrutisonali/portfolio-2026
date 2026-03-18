@@ -428,49 +428,79 @@ class CardTransitions {
   _bindSliderSwipe(viewport, getCurrentIndex, totalSlides, goToSlide) {
     let startX = 0;
     let startY = 0;
-    let isSwiping = false;
-    let isScrolling = null; // null = undecided, true = vertical scroll, false = horizontal swipe
+    let currentX = 0;
+    let tracking = false;
 
+    const onStart = (x, y) => {
+      startX = x;
+      startY = y;
+      currentX = x;
+      tracking = true;
+    };
+
+    const onMove = (x, y, e) => {
+      if (!tracking) return;
+      currentX = x;
+      // Prevent default to stop iOS Safari from doing anything else
+      if (e && e.cancelable) e.preventDefault();
+    };
+
+    const onEnd = () => {
+      if (!tracking) return;
+      tracking = false;
+      const dx = currentX - startX;
+      const threshold = 40;
+      const current = getCurrentIndex();
+
+      if (dx < -threshold && current < totalSlides - 1) {
+        goToSlide(current + 1);
+      } else if (dx > threshold && current > 0) {
+        goToSlide(current - 1);
+      }
+    };
+
+    // Touch events (mobile)
     viewport.addEventListener('touchstart', (e) => {
-      startX = e.touches[0].clientX;
-      startY = e.touches[0].clientY;
-      isSwiping = true;
-      isScrolling = null;
+      onStart(e.touches[0].clientX, e.touches[0].clientY);
     }, { passive: true });
 
     viewport.addEventListener('touchmove', (e) => {
-      if (!isSwiping) return;
-      const dx = e.touches[0].clientX - startX;
-      const dy = e.touches[0].clientY - startY;
-
-      // Decide direction on first significant move
-      if (isScrolling === null && (Math.abs(dx) > 8 || Math.abs(dy) > 8)) {
-        isScrolling = Math.abs(dy) > Math.abs(dx);
-      }
-
-      // If horizontal swipe, prevent page scroll
-      if (isScrolling === false) {
-        e.preventDefault();
-      }
+      onMove(e.touches[0].clientX, e.touches[0].clientY, e);
     }, { passive: false });
 
-    viewport.addEventListener('touchend', (e) => {
-      if (!isSwiping) return;
-      isSwiping = false;
-
-      const endX = e.changedTouches[0].clientX;
-      const dx = endX - startX;
-      const threshold = 50; // minimum swipe distance in px
-      const current = getCurrentIndex();
-
-      if (isScrolling === false || isScrolling === null) {
-        if (dx < -threshold && current < totalSlides - 1) {
-          goToSlide(current + 1);
-        } else if (dx > threshold && current > 0) {
-          goToSlide(current - 1);
-        }
-      }
+    viewport.addEventListener('touchend', () => {
+      onEnd();
     }, { passive: true });
+
+    viewport.addEventListener('touchcancel', () => {
+      tracking = false;
+    }, { passive: true });
+
+    // Pointer events (fallback for hybrid devices)
+    viewport.addEventListener('pointerdown', (e) => {
+      if (e.pointerType === 'touch') {
+        viewport.setPointerCapture(e.pointerId);
+        onStart(e.clientX, e.clientY);
+      }
+    });
+
+    viewport.addEventListener('pointermove', (e) => {
+      if (e.pointerType === 'touch' && tracking) {
+        onMove(e.clientX, e.clientY, e);
+      }
+    });
+
+    viewport.addEventListener('pointerup', (e) => {
+      if (e.pointerType === 'touch') {
+        onEnd();
+      }
+    });
+
+    viewport.addEventListener('pointercancel', (e) => {
+      if (e.pointerType === 'touch') {
+        tracking = false;
+      }
+    });
   }
 
   _goToWebSlide(index) {
