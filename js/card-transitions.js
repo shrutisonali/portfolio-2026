@@ -404,6 +404,14 @@ class CardTransitions {
       });
     });
 
+    // Touch/swipe support
+    this._bindSliderSwipe(
+      overlay.querySelector('.web-slider__viewport'),
+      () => this._currentWebSlide,
+      CONFIG.webProjects.length,
+      (i) => this._goToWebSlide(i)
+    );
+
     // Keyboard nav
     this._sliderKeyHandler = (e) => {
       if (this.activePage !== 'work-stack') return;
@@ -414,6 +422,55 @@ class CardTransitions {
       }
     };
     document.addEventListener('keydown', this._sliderKeyHandler);
+  }
+
+  /** Shared touch/swipe handler for any slider viewport */
+  _bindSliderSwipe(viewport, getCurrentIndex, totalSlides, goToSlide) {
+    let startX = 0;
+    let startY = 0;
+    let isSwiping = false;
+    let isScrolling = null; // null = undecided, true = vertical scroll, false = horizontal swipe
+
+    viewport.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      isSwiping = true;
+      isScrolling = null;
+    }, { passive: true });
+
+    viewport.addEventListener('touchmove', (e) => {
+      if (!isSwiping) return;
+      const dx = e.touches[0].clientX - startX;
+      const dy = e.touches[0].clientY - startY;
+
+      // Decide direction on first significant move
+      if (isScrolling === null && (Math.abs(dx) > 8 || Math.abs(dy) > 8)) {
+        isScrolling = Math.abs(dy) > Math.abs(dx);
+      }
+
+      // If horizontal swipe, prevent page scroll
+      if (isScrolling === false) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    viewport.addEventListener('touchend', (e) => {
+      if (!isSwiping) return;
+      isSwiping = false;
+
+      const endX = e.changedTouches[0].clientX;
+      const dx = endX - startX;
+      const threshold = 50; // minimum swipe distance in px
+      const current = getCurrentIndex();
+
+      if (isScrolling === false || isScrolling === null) {
+        if (dx < -threshold && current < totalSlides - 1) {
+          goToSlide(current + 1);
+        } else if (dx > threshold && current > 0) {
+          goToSlide(current - 1);
+        }
+      }
+    }, { passive: true });
   }
 
   _goToWebSlide(index) {
@@ -531,6 +588,14 @@ class CardTransitions {
         this._goToPkgSlide(parseInt(dot.dataset.slide));
       });
     });
+
+    // Touch/swipe support
+    this._bindSliderSwipe(
+      overlay.querySelector('.web-slider__viewport'),
+      () => this._currentPkgSlide,
+      projects.length,
+      (i) => this._goToPkgSlide(i)
+    );
 
     // Case study buttons
     overlay.querySelectorAll('.pkg-slide__cta').forEach(btn => {

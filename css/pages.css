@@ -542,7 +542,7 @@
 
 .about-skills {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   gap: var(--space-sm);
   justify-content: center;
 }
@@ -671,6 +671,7 @@
   flex: 1;
   min-height: 0;
   overflow: hidden;
+  touch-action: pan-y;
 }
 
 .web-slider__track {
@@ -755,7 +756,7 @@
 .browser-mockup__screenshot {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: top left;
   display: block;
 }
@@ -1343,7 +1344,7 @@
 /* Responsive */
 @media (max-width: 768px) {
   .brand-grid {
-    padding: 8vh var(--space-md) 4vh;
+    padding: calc(8vh + 40px) var(--space-md) 4vh;
   }
 
   .brand-grid__cards {
@@ -1469,10 +1470,14 @@
   }
 
   .brand-grid {
-    padding: 6vh var(--space-sm) 3vh;
+    padding: calc(6vh + 40px) var(--space-sm) 3vh;
   }
 
   .brand-grid__title {
     font-size: var(--text-xl);
+  }
+
+  .case-study {
+    padding: calc(6vh + 40px) var(--space-sm) 3vh;
   }
 }
