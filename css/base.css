@@ -553,6 +553,20 @@ ul, ol {
   color: var(--color-ink-soft);
 }
 
+.resume-entry__list {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  color: var(--color-ink-soft);
+  padding-left: 18px;
+  margin: 4px 0 0 0;
+  list-style: disc;
+}
+
+.resume-entry__list li {
+  margin-bottom: 4px;
+}
+
 .resume-tags {
   display: flex;
   flex-wrap: wrap;
