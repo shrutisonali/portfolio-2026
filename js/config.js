@@ -71,7 +71,7 @@ const CONFIG = {
         tagline: 'Non-Linear',
         highlightWord: 'Creative.',
         tagline2: '',
-        subtitle: 'Brand to Web. Designed and Built with AI.'
+        subtitle: 'Design Engineer · Brand & Web · Built with Claude Code'
       }
     },
 
