@@ -32,8 +32,8 @@
 
   /* Work stack decks — compact on tablet */
   .work-stack__deck {
-    width: 180px;
-    height: 220px;
+    width: 280px;
+    height: 350px;
   }
 
   .work-stack__name {
@@ -176,8 +176,8 @@
 
   /* Work stack decks — compact on mobile */
   .work-stack__deck {
-    width: 170px;
-    height: 200px;
+    width: 240px;
+    height: 300px;
   }
 
   .work-stack__name {
@@ -340,8 +340,8 @@
 
   /* Work stack even more compact */
   .work-stack__deck {
-    width: 150px;
-    height: 180px;
+    width: 200px;
+    height: 250px;
   }
 
   .work-stack__card-desc {

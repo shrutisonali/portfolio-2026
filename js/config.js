@@ -189,8 +189,8 @@ const CONFIG = {
       type: 'work-stack',
       x: 1900,
       y: 1540,
-      width: 260,
-      height: 340,
+      width: 380,
+      height: 490,
       depth: 3,
       rotation: -2,
       data: {
@@ -211,8 +211,8 @@ const CONFIG = {
       type: 'work-stack',
       x: 2920,
       y: 1880,
-      width: 260,
-      height: 340,
+      width: 380,
+      height: 490,
       depth: 3,
       rotation: 3,
       data: {
@@ -232,8 +232,8 @@ const CONFIG = {
       type: 'work-stack',
       x: 1620,
       y: 2050,
-      width: 260,
-      height: 340,
+      width: 380,
+      height: 490,
       depth: 3,
       rotation: -1,
       data: {

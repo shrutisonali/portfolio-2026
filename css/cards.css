@@ -562,8 +562,8 @@
 
 .work-stack__deck {
   position: relative;
-  width: 200px;
-  height: 250px;
+  width: 320px;
+  height: 400px;
 }
 
 .work-stack__card {
@@ -578,7 +578,7 @@
   transform: translate(var(--stack-offset-x), var(--stack-offset-y)) rotate(var(--stack-rotation));
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding: 14px;
   border: 1px solid rgba(0, 0, 0, 0.06);
   box-shadow: none;
   overflow: hidden;
@@ -603,6 +603,9 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  will-change: transform;
 }
 
 /* Color-only placeholder when no thumbnail */
@@ -621,8 +624,8 @@
 }
 
 .work-stack__card-dot {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, 0.08);
 }
@@ -634,7 +637,7 @@
 
 .work-stack__card-title {
   font-family: var(--font-display);
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 400;
   color: var(--color-ink);
   letter-spacing: -0.01em;
@@ -647,7 +650,7 @@
 
 .work-stack__card-desc {
   font-family: var(--font-body);
-  font-size: 9px;
+  font-size: 12px;
   color: var(--color-ink-muted);
   opacity: 1;
   line-height: 1.4;
