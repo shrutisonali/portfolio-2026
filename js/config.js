@@ -198,7 +198,7 @@ const CONFIG = {
         stackType: 'web',
         categoryTags: ['Websites', 'UI/UX', 'Development'],
         cards: [
-          { title: 'Kindred', color: '#6CC2EA', thumb: 'assets/screenshots/kindred.png?v=4', desc: 'Minimal studio site with bold type.' },
+          { title: 'Kindred', color: '#6CC2EA', thumb: 'assets/screenshots/kindred.png?v=5', desc: 'Minimal studio site with bold type.' },
           { title: 'Sylva', color: '#EA89B9', thumb: 'assets/screenshots/sylva.png?v=3', desc: 'Wellness brand with soft editorial feel.' },
           { title: 'Operators', color: '#A0D4A6', thumb: 'assets/screenshots/operators.png?v=3', desc: 'Community platform, clean and direct.' },
           { title: 'PreSales', color: '#F8C614', thumb: 'assets/screenshots/presales.png?v=3', desc: 'Professional collective, warm refresh.' },
@@ -477,7 +477,7 @@ const CONFIG = {
 
   // ── Web projects for slider ──
   webProjects: [
-    { id: 'web-kindred', title: 'Kindred Web Studio', url: 'https://kindredwebstudio.com', tags: ['Web Design', 'Development'], color: '#6CC2EA', screenshot: 'assets/screenshots/kindred.png?v=4' },
+    { id: 'web-kindred', title: 'Kindred Web Studio', url: 'https://kindredwebstudio.com', tags: ['Web Design', 'Development'], color: '#6CC2EA', screenshot: 'assets/screenshots/kindred.png?v=5' },
     { id: 'web-sylva', title: 'Sylva', url: 'https://withsylva.com', tags: ['Web Design', 'Development'], color: '#EA89B9', screenshot: 'assets/screenshots/sylva.png?v=3' },
     { id: 'web-operators', title: 'Operators', url: 'https://joinoperators.com', tags: ['Web Design', 'Development'], color: '#A0D4A6', screenshot: 'assets/screenshots/operators.png?v=3' },
     { id: 'web-presales', title: 'PreSales Collective', url: 'https://presalescollective.com', tags: ['Web Design', 'Development', 'Brand Refresh'], color: '#F8C614', screenshot: 'assets/screenshots/presales.png?v=3' },
